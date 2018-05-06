@@ -1,0 +1,14 @@
+<div class="main">
+  <div class="container">
+  <h2>Go Tournaments</h2>
+    <% @tournament.each do |tournament| %>
+    <div class="tournament">
+      <%= image_tag tournament.image %>
+      <h3><%= tournament.title %></h3>
+      <p><%= tournament.date %></p>
+      <p><%= tournament.venue %></p>
+      <%= link_to "Learn more", tournament_path(tournament) %>
+    </div>
+    <% end %>
+  </div>
+</div>

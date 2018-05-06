@@ -1,0 +1,20 @@
+version: "3"
+services:
+    app:
+          build: .
+          image: go-tournaments-app
+          ports:
+            - "3000:3000"
+          volumes:
+            - .:/usr/src/app
+    # db:
+    #     build: postgres-ip4r # standard postgres image plus ip4r extension
+    #     image: postgres-ip4r
+    #     volumes: # load in the starter dataset (if any)
+    #         - ./data:/docker-entrypoint-initdb.d
+    #     environment:
+    #         - POSTGRES_USER=bhlogin
+    #         - POSTGRES_PASSWORD=bhlogin
+    #     ports:
+    #         - "5433:5432" # only for accessing from localhost, e.g. to create new dumps
+    #
