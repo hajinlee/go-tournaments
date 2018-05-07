@@ -1,5 +1,9 @@
 FROM ruby:2.3.3
 
+RUN apt-get -y update
+
+RUN apt-get install -y sqlite3 libsqlite3-dev
+
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
 

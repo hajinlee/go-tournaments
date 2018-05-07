@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_06_043053) do
+ActiveRecord::Schema.define(version: 2018_05_07_174955) do
 
   create_table "tournaments", force: :cascade do |t|
     t.integer "tournament_id"
     t.string "title"
     t.string "image"
-    t.string "date"
     t.string "venue"
     t.string "city"
     t.string "state"
@@ -24,6 +23,17 @@ ActiveRecord::Schema.define(version: 2018_05_06_043053) do
     t.string "contact"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "country"
+    t.string "password_digest"
+    t.string "game_rules"
+    t.boolean "is_rated"
+    t.string "registration_fee"
+    t.string "time_setting"
+    t.time "check_in_begins"
+    t.time "first_round_begins"
   end
 
 end
