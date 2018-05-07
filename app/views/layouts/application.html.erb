@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Go Tournaments</title>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -19,9 +20,10 @@
         </div>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><button class="btn btn-danger navbar-btn">Create Tournament Page</button></li>
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Log-in</a></li>
+          <li><a href="#">Log-in</a></li>
+          <a href="/create" class="btn btn-danger navbar-btn">Create a Tournament Page</a>
         </ul>
+
       </div>
     </nav>
 

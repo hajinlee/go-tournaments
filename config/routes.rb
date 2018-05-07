@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  get '/index' => 'tournament#index'
-  
-  resources :tournament_pages
-  
+  get '/' => 'tournament#index'
+
+  resources :tournament
+
   root 'tournament#index'
-  get 'tournament/:id' => 'tournament#show'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get '/tournament/:id(.:format)' => 'tournament#show'
+  get '/tournament/:id(.:format)' => 'tournament#edit'
+  patch '/tournament/:id(.:format)' => 'tournament#update'
+  put '/tournament/:id(.:format)' => 'tournament#update'
+
+  get '/create(.:format)' => 'tournament#new'
+  post 'create(.:format)' => 'tournament#create'
+
+  delete '/tournament/:id(.:format)' => 'tournament#destroy'
 end

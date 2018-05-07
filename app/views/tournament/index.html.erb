@@ -2,23 +2,25 @@
 <html>
 <head>
 <title>Go Tournaments</title>
-<link rel="icon" href="app/assets/images/favicon.png" sizes="192x192" />
+
 <link rel="stylesheet" href="app/assets/stylesheets/tournament.scss" type="text/css" />
 </head>
 
 <body>
-<div class="main">
-  <div class="container">
-  <h2>Go Tournaments</h2>
-    <% @tournament.each do |tournament| %>
-    <div class="tournament">
-      <%= image_tag tournament.image %>
-      <h3><%= tournament.title %></h3>
-      <p><%= tournament.date %></p>
-      <p><%= tournament.venue %></p>
-      <%= link_to "Learn more", tournament_path(tournament) %>
+<div class="container">
+  <div class="port">
+    <div class="img-row">
+      <a href="#">
+      <div class="img-port">
+        <% @tournament.each do |tournament| %>
+        <%= image_tag tournament.image %>
+        <h3><%= tournament.title %></h3>
+        <p class="date"><%= tournament.start_date %></p>
+        <p class="location"><%= tournament.city %> + "," + <%= tournament.state %></p>
+      </div>
+      </a>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
 </body>
