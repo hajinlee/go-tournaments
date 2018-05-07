@@ -1,10 +1,13 @@
 class TournamentController < ApplicationController
+
+  http_basic_authenticate_with password: :password_digest, except: [:index, :show, :new, :create]
+
   def index
     @tournaments = Tournament.all
   end
 
   def show
-    @tournaments = Tournament.find(params[:id])
+    @tournament = Tournament.find(params[:id])
   end
 
   def new
@@ -12,38 +15,38 @@ class TournamentController < ApplicationController
   end
 
   def edit
-    @tournaments = Tournament.find(params[:id])
+    @tournament = Tournament.find(params[:id])
   end
 
   def create
-    @tournaments = Tournament.new(tournament_params)
+    @tournament = Tournament.new(tournament_params)
 
-    if @tournaments.save
-      redirect_to @tournaments
+    if @tournament.save
+      redirect_to @tournament
     else
-      render 'new'
+      render :new
     end
   end
 
   def update
-    @tournaments = Tournament.find(params[:id])
+    @tournament = Tournament.find(params[:id])
 
-    if @tournaments.update(tournament_params)
-      redirect_to @tournaments
+    if @tournament.update(tournament_params)
+      redirect_to @tournament
     else
-      render 'edit'
+      render :edit
     end
   end
 
   def destroy
-    @tournaments = Tournament.find(params[:id])
-    @tournaments.destroy
+    @tournament = Tournament.find(params[:id])
+    @tournament.destroy
 
-    redirect_to tournament_path
+    redirect_to tournaments_path
   end
 
   private
     def tournament_params
-      params.require(:tournament).permit(:tournament, :text)
+      params.permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
     end
 end

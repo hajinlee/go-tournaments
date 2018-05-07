@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get '/' => 'tournament#index'
+  get 'tournament/index'
 
-  resources :tournament
+  resources :tournaments
 
   root 'tournament#index'
 
@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   patch '/tournament/:id(.:format)' => 'tournament#update'
   put '/tournament/:id(.:format)' => 'tournament#update'
 
-  get '/create(.:format)' => 'tournament#new'
-  post 'create(.:format)' => 'tournament#create'
+  get '/new(.:format)' => 'tournament#new'
+  post '/new(.:format)' => 'tournament#create'
 
   delete '/tournament/:id(.:format)' => 'tournament#destroy'
 end

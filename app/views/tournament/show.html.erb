@@ -8,6 +8,10 @@
         <p class="tournament-date"> <%= @tournament.start_date %> </p>
         <p class="tournament-venue"> <%= @tournament.city %> </p>
       </div>
+      <%= link_to 'Edit', edit_tournament_path(tournament) %>
+      <%= link_to 'Destroy', tournament_path(tournament),
+          method: :delete,
+          data: { confirm: 'Are you sure?' } %>
     </div>
   </div>
 </div>
