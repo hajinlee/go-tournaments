@@ -12,7 +12,7 @@
     <div class="img-row">
       <a href="#">
       <div class="img-port">
-        <% @tournament.each do |tournament| %>
+        <% @tournaments.each do |tournament| %>
         <%= image_tag tournament.image %>
         <h3><%= tournament.title %></h3>
         <p class="date"><%= tournament.start_date %></p>
