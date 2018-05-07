@@ -1997,12 +1997,39 @@ table th[class*="col-"] {
   }
 }
 
-fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  min-width: 0;
+.fieldset-green {
+  border: 3px solid #28a745;
+  border-radius: 15px;
+  margin: 2em 0;
 }
+
+.fieldset-yellow {
+  border: 3px solid #ffc107;
+  border-radius: 15px;
+  margin: 2em 0;
+}
+
+.fieldset-blue {
+  border: 3px solid #007bff;
+  border-radius: 15px;
+  margin: 2em 0;
+}
+
+.fieldset-red {
+  border: 3px solid #dc3545;
+  border-radius: 15px;
+  margin: 2em 0;
+}
+
+.field {
+  display: flex;
+  padding: 10px;
+  > * {
+    flex: 1 1 auto;
+    margin: 10px;
+      size: 14px;
+    }
+  }
 
 legend {
   display: block;
@@ -2589,11 +2616,10 @@ select[multiple].input-lg,
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
-  background-image: none;
   border: 1px solid transparent;
   white-space: nowrap;
-  padding: 10px 20px;
-  font-size: 14px;
+  padding: 10px 10px;
+  font-size: 15px;
   line-height: 1.42857;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -2667,8 +2693,17 @@ a.btn.disabled, fieldset[disabled] a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+  background-color: #00A1F1;
+  border-color: #00A1F1;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 10px 15px;
+  font-size: 20px;
+  line-height: 1.42857;
+  border-radius: 8px;
+
 }
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;

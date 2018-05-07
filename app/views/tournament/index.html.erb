@@ -7,19 +7,17 @@
 </head>
 
 <body>
-  <h1>I am tournament index!</h1>
-<div class="container">
-  <div class="port">
-    <div class="img-row">
-      <a href="#">
-      <div class="img-port">
-        <% @tournaments.each do |tournament| %>
-        <%= image_tag tournament.image %>
-        <h3><%= tournament.title %></h3>
-        <p class="date"><%= tournament.start_date %></p>
-        <p class="location"><%= tournament.city %> + "," + <%= tournament.state %></p>
-      </div>
-      </a>
+
+  <div class="container">
+    <div class="port">
+      <div class="img-row">
+          <div class="img-port">
+            <% @tournaments.each do |tournament| %>
+            <!-- image -->
+            <h3><%= tournament.title %></h3>
+            <p class="date"><%= tournament.start_date %></p>
+            <p class="location"><%= tournament.city %>, <%= tournament.state %></p>
+          </div>
       <% end %>
     </div>
   </div>
