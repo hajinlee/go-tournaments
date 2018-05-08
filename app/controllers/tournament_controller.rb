@@ -1,6 +1,6 @@
 class TournamentController < ApplicationController
 
-  http_basic_authenticate_with password: :password_digest, except: [:index, :show, :new, :create]
+  #http_basic_authenticate_with password: :password_digest, except: [:index, :show, :new, :create]
 
   def index
     @tournaments = Tournament.all

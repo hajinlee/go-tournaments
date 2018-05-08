@@ -14,9 +14,9 @@
           <div class="img-port">
             <% @tournaments.each do |tournament| %>
             <!-- image -->
-            <h3><%= tournament.title %></h3>
-            <p class="date"><%= tournament.start_date %></p>
-            <p class="location"><%= tournament.city %>, <%= tournament.state %></p>
+            <h3><%= link_to(tournament.title, :controller => 'tournament', :action => 'show', :id => tournament.id) %></h3>
+            <%= tournament.start_date %></p>
+            <%= tournament.city %>, <%= tournament.state %></p>
           </div>
       <% end %>
     </div>

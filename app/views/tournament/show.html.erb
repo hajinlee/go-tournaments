@@ -1,17 +1,41 @@
-<div class="main tournament-show">
-  <div class="container">
-    <div class="tournament">
 
-      <div class="info">
-        <!-- image -->
-        <h2 class="tournament-title"> <%= @tournament.title %> </h2>
-        <p class="tournament-date"> <%= @tournament.start_date %> </p>
-        <p class="tournament-venue"> <%= @tournament.city %> </p>
-      </div>
-      <%= link_to 'Edit', edit_tournament_path(tournament) %>
-      <%= link_to 'Destroy', tournament_path(tournament),
+<div class="container">
+    <div class="field">
+      <!-- image -->
+      <h2> <%= @tournament.title %> </h2>
+    </div>
+
+    <div class="pull-right">
+      <h4><%= image_tag("london.jpg", :width => 300, :crop => "scale") %>
+    </div>
+
+    <div class="field">
+      <h4><%= image_tag("calendar.svg", :size => "25x25") %>
+    <% if @tournament.start_date == @tournament.end_date %>
+      &nbsp&nbsp<%= @tournament.start_date %></h4>
+    <% else %>
+      &nbsp&nbsp<%= @tournament.start_date %> ~ <%= @tournament.end_date %></h4>
+    <% end %>
+    </div>
+
+    <div class="field">
+      <h4><%= image_tag("location.svg", :size => "25x25") %>
+      &nbsp&nbsp<%= @tournament.venue %>,
+      &nbsp<%= @tournament.city %>,
+      &nbsp<%= @tournament.state %></h4>
+    </div>
+
+    <div class="field">
+      <% if @tournament.description? %>
+        <h4><%= image_tag("comment.svg", :size => "25x25") %>
+        &nbsp&nbsp<%= @tournament.description %></h4>
+      <% end %>
+    </div>
+
+      <%= link_to 'Edit', edit_tournament_path(@tournament), { class: 'btn-primary' } %>
+
+      <%= link_to 'Delete', tournament_path(@tournament),
           method: :delete,
           data: { confirm: 'Are you sure?' } %>
     </div>
-  </div>
 </div>

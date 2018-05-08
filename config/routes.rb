@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   get 'tournament/index'
 
-  resources :tournaments
+  resources :tournament
 
   root 'tournament#index'
 
   get '/tournament/:id(.:format)' => 'tournament#show'
-  get '/tournament/:id(.:format)' => 'tournament#edit'
-  patch '/tournament/:id(.:format)' => 'tournament#update'
-  put '/tournament/:id(.:format)' => 'tournament#update'
+
+  get '/tournament/:id/edit(.:format)' => 'tournament#edit'
+  put '/tournament/:id/edit(.:format)' => 'tournament#update'
 
   get '/new(.:format)' => 'tournament#new'
   post '/new(.:format)' => 'tournament#create'
