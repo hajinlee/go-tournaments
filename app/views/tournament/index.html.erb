@@ -1,8 +1,8 @@
 
 
-  <div class="container">
+  <div class="container-fluid">
     <% @tournaments.each do |tournament| %>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <div class="fieldset-light">
         <% if tournament.image == nil %>
           <%= image_tag("alt.jpg", :class => "img-responsive") %>
@@ -10,7 +10,7 @@
           <%= tournament.image %>
         <% end %>
         <div class="field-sm">
-        <h4><%= link_to(tournament.title, :controller => 'tournament', :action => 'show', :id => tournament.id) %></h4>
+        <h5><%= link_to(tournament.title, :controller => 'tournament', :action => 'show', :id => tournament.id) %></h5>
       </div>
       <div class="field-sm">
         <% if tournament.start_date == tournament.end_date %>
