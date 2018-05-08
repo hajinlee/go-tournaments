@@ -18,8 +18,13 @@ class TournamentController < ApplicationController
     @tournament = Tournament.find(params[:id])
   end
 
+  # NOTE: currently the form encloses parameter names within "tournament[xxx]" in update mode,
+  # but does NOT enclose the parameters in create mode.
+  # therefore, we have to duplicate the params.permit() logic to extract from the "tournament[]" in
+  # the update method, but NOT extract in the create method.
+
   def create
-    @tournament = Tournament.new(tournament_params)
+    @tournament = Tournament.new(sanitize_parameters(params))
 
     if @tournament.save
       redirect_to @tournament
@@ -31,7 +36,7 @@ class TournamentController < ApplicationController
   def update
     @tournament = Tournament.find(params[:id])
 
-    if @tournament.update(tournament_params)
+    if @tournament.update(sanitize_parameters(params.require(:tournament)))
       redirect_to @tournament
     else
       render :edit
@@ -47,6 +52,9 @@ class TournamentController < ApplicationController
 
   private
     def tournament_params
-      params.permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :description, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
+      params.require(:tournament).permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :description, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
+    end
+    def sanitize_parameters(p)
+      p.permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :description, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
     end
 end
