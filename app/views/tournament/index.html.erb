@@ -1,22 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Go Tournaments</title>
 
-<link rel="stylesheet" href="app/assets/stylesheets/tournament.scss" type="text/css" />
-</head>
-
-<body>
 
   <div class="container">
-    <%= @tournaments.each do |tournament| %>
+    <% @tournaments.each do |tournament| %>
       <div class="col-sm-6">
-        <%= image_tag("alt.jpg", :class => "col-sm-4") %>
+        <div class="fieldset-light">
+        <% if tournament.image == nil %>
+          <%= image_tag("alt.jpg", :class => "img-responsive") %>
+        <% else %>
+          <%= tournament.image %>
+        <% end %>
+        <div class="field-sm">
         <h4><%= link_to(tournament.title, :controller => 'tournament', :action => 'show', :id => tournament.id) %></h4>
-        <p><%= tournament.start_date %></p>
+      </div>
+      <div class="field-sm">
+        <% if tournament.start_date == tournament.end_date %>
+          <p><%= tournament.start_date %></p>
+        <% else %>
+          <p><%= tournament.start_date %> ~ <%= tournament.end_date %></p>
+        <% end %>
+      </div>
+      <div class="field-sm">
         <p><%= tournament.city %>, <%= tournament.state %></p>
       </div>
+      </div>
+    </div>
     <% end %>
   </div>
-</body>
-</html>

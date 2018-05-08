@@ -11,7 +11,7 @@ class TournamentController < ApplicationController
   end
 
   def new
-    @tournament = Tournament.new
+    @tournaments = Tournament.new
   end
 
   def edit

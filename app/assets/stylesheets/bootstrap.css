@@ -2021,12 +2021,29 @@ table th[class*="col-"] {
   margin: 2em 0;
 }
 
+.fieldset-light {
+  border: 2px groove #808080;
+  border-radius: 5px;
+  margin: 2em 0;
+}
+
 .field {
   display: flex;
   padding: 10px;
   > * {
     flex: 1 1 auto;
     margin: 10px;
+      size: 14px;
+    }
+  }
+
+.field-sm {
+  display: flex;
+  padding: 2px;
+  padding-left: 10px;
+  > * {
+    flex: 1 1 auto;
+    margin: 5px;
       size: 14px;
     }
   }
