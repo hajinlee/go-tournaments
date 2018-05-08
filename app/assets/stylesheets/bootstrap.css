@@ -1773,7 +1773,7 @@ caption {
 }
 
 th {
-  text-align: left;
+  text-align: center;
 }
 
 .table {
@@ -6288,5 +6288,51 @@ button.close {
     display: none !important;
   }
 }
+
+.port{
+	z-index: 1;
+
+	min-height:100%;
+	background-color: white;
+}
+
+.images{
+	padding-top: 100px;
+	padding-left: 300px;
+	padding-bottom: 150px;
+}
+
+.img-port {
+	width:500px;
+	float: left;
+	margin-right: 50px;
+}
+
+.img-port img{
+	width:500px;
+	height: 300px;
+}
+
+.img-port p, .img-port h3{
+	width:470px;
+	margin-left: 10px;
+	margin-right:10px;
+}
+
+.img-row{
+	padding-bottom: 30px;
+	height:500px;
+}
+
+.img-row a{
+	color:black;
+	transition:color 1s;
+}
+
+.img-row a:hover{
+	color:magenta;
+	transition: color 0.5s;
+}
+
 
 /*# sourceMappingURL=bootstrap.css.map */

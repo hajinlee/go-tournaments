@@ -11,7 +11,7 @@ class TournamentController < ApplicationController
   end
 
   def new
-    @tournaments = Tournament.new
+    @tournament = Tournament.new
   end
 
   def edit
@@ -42,11 +42,16 @@ class TournamentController < ApplicationController
     @tournament = Tournament.find(params[:id])
     @tournament.destroy
 
-    redirect_to tournaments_path
+    redirect_to tournament_path
+  end
+
+  def show_image
+    @tournament = Tournament.find(params[:id])
+    send_data @tournament.image, :type => 'image/png', :disposition => 'inline'
   end
 
   private
     def tournament_params
-      params.permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
+      params.permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :description, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
     end
 end

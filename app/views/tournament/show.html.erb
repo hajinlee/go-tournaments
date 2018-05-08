@@ -32,10 +32,30 @@
       <% end %>
     </div>
 
-      <%= link_to 'Edit', edit_tournament_path(@tournament), { class: 'btn-primary' } %>
+    <div class="field">
+      <table>
+        <tr>
+          <th><%= image_tag("go.png", :size => "25x25") %></th>
+          <th><%= image_tag("hourglass.svg", :size => "25x25") %></th>
+          <th><%= image_tag("graph.svg", :size => "25x25") %></th>
+        </tr>
+        <tr>
+          <td><%= @tournament.game_rules %></td>
+          <td><%= @tournament.time_setting %></td>
 
-      <%= link_to 'Delete', tournament_path(@tournament),
-          method: :delete,
-          data: { confirm: 'Are you sure?' } %>
+        <% if @tournament.is_rated? %>
+          <td> AGA Rated </td>
+        <% else %>
+          <td> Not Rated</td>
+        <% end %>
+        </tr>
+      </table>
+      </div>
+
+
+    <div class="field">
+      <h5><%= link_to 'Edit', edit_tournament_path(@tournament) %>&nbsp&nbsp
+          <%= link_to 'Delete', tournament_path(@tournament),
+              method: :delete, data: { confirm: 'Are you sure?' } %></h5>
     </div>
 </div>

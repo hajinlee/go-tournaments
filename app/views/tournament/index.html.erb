@@ -9,18 +9,14 @@
 <body>
 
   <div class="container">
-    <div class="port">
-      <div class="img-row">
-          <div class="img-port">
-            <% @tournaments.each do |tournament| %>
-            <!-- image -->
-            <h3><%= link_to(tournament.title, :controller => 'tournament', :action => 'show', :id => tournament.id) %></h3>
-            <%= tournament.start_date %></p>
-            <%= tournament.city %>, <%= tournament.state %></p>
-          </div>
-      <% end %>
-    </div>
+    <%= @tournaments.each do |tournament| %>
+      <div class="col-sm-6">
+        <%= image_tag("alt.jpg", :class => "col-sm-4") %>
+        <h4><%= link_to(tournament.title, :controller => 'tournament', :action => 'show', :id => tournament.id) %></h4>
+        <p><%= tournament.start_date %></p>
+        <p><%= tournament.city %>, <%= tournament.state %></p>
+      </div>
+    <% end %>
   </div>
-</div>
 </body>
 </html>
