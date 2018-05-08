@@ -1765,6 +1765,10 @@ pre code {
 }
 table {
   background-color: transparent;
+  width: 70%;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-left: 0;
 }
 
 caption {
@@ -1776,6 +1780,17 @@ caption {
 
 th {
   text-align: center;
+  padding-top: 20px;
+  padding: 5px;
+  width: 25%;
+}
+
+td {
+  text-align: center;
+
+  padding-top: 10px;
+
+  width: 25%;
 }
 
 .table {
@@ -1789,7 +1804,7 @@ th {
 .table > tbody > tr > td,
 .table > tfoot > tr > th,
 .table > tfoot > tr > td {
-  padding: 8px;
+  padding: 15px;
   line-height: 1.42857;
   vertical-align: top;
   border-top: 1px solid #ddd;
