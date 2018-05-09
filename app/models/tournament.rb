@@ -1,5 +1,5 @@
 class Tournament < ApplicationRecord
-  validates :title, presence: true,
-                    length: { minimum: 5 }
-  #add dates
+  validates :title, :start_date, :end_date, presence: true
+
+
 end
