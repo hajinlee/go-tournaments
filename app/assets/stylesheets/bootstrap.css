@@ -1780,6 +1780,7 @@ table {
 #tournament_list td, #tournament_list th {
     border: 1px solid #ddd;
     padding: 8px;
+    white-space: nowrap;
 }
 
 #tournament_list tr:nth-child(even){background-color: #f2f2f2;}
