@@ -3,7 +3,7 @@ class TournamentController < ApplicationController
   #http_basic_authenticate_with password: :password_digest, except: [:index, :show, :new, :create]
 
   def index
-    @tournaments = Tournament.all
+    @tournaments = Tournament.where('start_date > ?', Date.today).order('start_date')
   end
 
   def show

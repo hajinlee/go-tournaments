@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <% @tournaments.sort{|a,b| a.start_date <=> b.start_date}.each do |tournament| %>
+  <% @tournaments.each do |tournament| %>
     <div class="col-sm-4">
       <div class="fieldset-light">
         <% if tournament.image == nil %>
