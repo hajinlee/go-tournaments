@@ -1771,6 +1771,30 @@ table {
   margin-left: 0;
 }
 
+#tournament_list {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tournament_list td, #tournament_list th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tournament_list tr:nth-child(even){background-color: #f2f2f2;}
+
+#tournament_list tr:hover {background-color: #ddd;}
+
+#tournament_list th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+}
+
 caption {
   padding-top: 8px;
   padding-bottom: 8px;
@@ -1787,10 +1811,14 @@ th {
 
 td {
   text-align: center;
+  padding-top: 10px;
+  width: 25%;
+}
 
+tc {
+  text-align: center;
   padding-top: 10px;
 
-  width: 25%;
 }
 
 .table {
@@ -1868,7 +1896,8 @@ table col[class*="col-"] {
 }
 
 table td[class*="col-"],
-table th[class*="col-"] {
+table th[class*="col-"]
+table tc[class*="col-"] {
   position: static;
   float: none;
   display: table-cell;
@@ -5141,7 +5170,7 @@ button.list-group-item-danger.active:focus {
 .panel > .table-bordered > tbody > tr > td:last-child,
 .panel > .table-bordered > tfoot > tr > th:last-child,
 .panel > .table-bordered > tfoot > tr > td:last-child,
-.panel > .table-responsive > .table-bordered > thead > tr > th:last-child,
+.panel > .table-responsive > . -bordered > thead > tr > th:last-child,
 .panel > .table-responsive > .table-bordered > thead > tr > td:last-child,
 .panel > .table-responsive > .table-bordered > tbody > tr > th:last-child,
 .panel > .table-responsive > .table-bordered > tbody > tr > td:last-child,

@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
   delete '/tournament/:id(.:format)' => 'tournament#destroy'
 
+  get '/list(.:format)' => 'tournament#list'
+
 end

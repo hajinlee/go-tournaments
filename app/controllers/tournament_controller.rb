@@ -50,6 +50,10 @@ class TournamentController < ApplicationController
     redirect_to root_path
   end
 
+  def list
+    @tournaments = Tournament.all
+  end
+
   private
     def tournament_params
       params.require(:tournament).permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :description, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
