@@ -48,7 +48,7 @@
       <td><%= @tournament.registration_fee %></td>
     </tr>
   </table>
-  
+
   <table>
     <tr>
       <th><%= image_tag("clock.svg", :size => "25x25") %></th>
@@ -63,8 +63,12 @@
         <td> Contact info: </td>
       </tr>
       <tr>
-        <td><%= @tournament.check_in_begins.time.strftime("%I:%M %p") %></td>
-        <td><%= @tournament.first_round_begins.time.strftime("%I:%M %p") %></td>
+        <td><% if @tournament.check_in_begins? %>
+              <%= @tournament.check_in_begins.time.strftime("%I:%M %p") %></td>
+            <% end %>
+        <td><% if @tournament.first_round_begins? %>
+              <%= @tournament.first_round_begins.time.strftime("%I:%M %p") %></td>
+            <% end %>
         <td><%= @tournament.organizer %></td>
         <td><%= @tournament.contact %></td>
       </tr>

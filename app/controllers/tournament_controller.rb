@@ -47,7 +47,7 @@ class TournamentController < ApplicationController
     @tournament = Tournament.find(params[:id])
     @tournament.destroy
 
-    redirect_to tournament_path
+    redirect_to root_path
   end
 
   private
