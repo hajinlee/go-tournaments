@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :tournaments
 
-  root 'tournaments#index'
+  root 'static_pages#index'
 end

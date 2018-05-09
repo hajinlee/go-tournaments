@@ -1,33 +1,21 @@
-<div class="container-fluid">
-  <% @tournaments.each do |tournament| %>
-    <div class="col-sm-4">
-      <div class="fieldset-light">
-        <% if tournament.image == nil %>
-          <%= image_tag("alt.jpg", :class => "img-responsive") %>
-        <% else %>
-          <%= tournament.image %>
-        <% end %>
+<div class="container">
+  <h1>All Tournaments</h1>
 
-        <div class="field-sm">
-          <h5><%= link_to(tournament.title, tournament_path(tournament)) %></h5>
-        </div>
+<table id="tournament_list">
+  <tr>
+    <th>Title</th>
+    <th>Date</th>
+    <th>City</th>
+    <th></th>
+  </tr>
 
-        <div class="field-sm">
-          <% if tournament.start_date == tournament.end_date %>
-            <p><%= tournament.start_date %></p>
-          <% else %>
-            <p><%= tournament.start_date %> ~ <%= tournament.end_date %></p>
-          <% end %>
-        </div>
-
-        <div class="field-sm">
-          <p><%= tournament.city %>, <%= tournament.state %></p>
-        </div>
-
-      </div>
-    </div>
+  <% @tournaments.sort{|a,b| b.start_date <=> a.start_date}.each do |tournament| %>
+    <tr>
+      <td><%= tournament.title %></td>
+      <td><%= tournament.start_date %></td>
+      <td><%= tournament.city %></td>
+      <td><%= link_to 'Show', tournament_path(tournament) %></td>
+    </tr>
   <% end %>
-
-  <h4><center><%= link_to 'All Tournaments List', tournaments_path %></center></h4>
-
+</table>
 </div>

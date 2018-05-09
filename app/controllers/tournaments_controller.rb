@@ -3,7 +3,7 @@ class TournamentsController < ApplicationController
   #http_basic_authenticate_with password: :password_digest, except: [:index, :show, :new, :create]
 
   def index
-    @tournaments = Tournament.where('start_date > ?', Date.today).order('start_date')
+    @tournaments = Tournament.all
   end
 
   def show
@@ -50,16 +50,10 @@ class TournamentsController < ApplicationController
     redirect_to root_path
   end
 
-  def list
-    @tournaments = Tournament.all
-  end
 
   private
     def tournament_params
       params[:tournament].permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :description, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
     end
-    
-    def sanitize_parameters(p)
-      p.permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :description, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
-    end
+
 end
