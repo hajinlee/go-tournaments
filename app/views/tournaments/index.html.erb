@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <% @tournaments.each do |tournament| %>
+    <div class="col-sm-4">
+      <div class="fieldset-light">
+        <% if tournament.image == nil %>
+          <%= image_tag("alt.jpg", :class => "img-responsive") %>
+        <% else %>
+          <%= tournament.image %>
+        <% end %>
+
+        <div class="field-sm">
+          <h5><%= link_to(tournament.title, tournament_path(tournament)) %></h5>
+        </div>
+
+        <div class="field-sm">
+          <% if tournament.start_date == tournament.end_date %>
+            <p><%= tournament.start_date %></p>
+          <% else %>
+            <p><%= tournament.start_date %> ~ <%= tournament.end_date %></p>
+          <% end %>
+        </div>
+
+        <div class="field-sm">
+          <p><%= tournament.city %>, <%= tournament.state %></p>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+
+  <h4><center><%= link_to 'All Tournaments List', tournaments_path %></center></h4>
+
+</div>

@@ -1,4 +1,4 @@
-class TournamentController < ApplicationController
+class TournamentsController < ApplicationController
 
   #http_basic_authenticate_with password: :password_digest, except: [:index, :show, :new, :create]
 
@@ -11,7 +11,7 @@ class TournamentController < ApplicationController
   end
 
   def new
-    @tournaments = Tournament.new
+    @tournament = Tournament.new
   end
 
   def edit
@@ -24,7 +24,7 @@ class TournamentController < ApplicationController
   # the update method, but NOT extract in the create method.
 
   def create
-    @tournament = Tournament.new(sanitize_parameters(params))
+    @tournament = Tournament.new(tournament_params)
 
     if @tournament.save
       redirect_to @tournament
@@ -36,7 +36,7 @@ class TournamentController < ApplicationController
   def update
     @tournament = Tournament.find(params[:id])
 
-    if @tournament.update(sanitize_parameters(params.require(:tournament)))
+    if @tournament.update(tournament_params)
       redirect_to @tournament
     else
       render :edit
@@ -56,8 +56,9 @@ class TournamentController < ApplicationController
 
   private
     def tournament_params
-      params.require(:tournament).permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :description, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
+      params[:tournament].permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :description, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
     end
+    
     def sanitize_parameters(p)
       p.permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :description, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
     end

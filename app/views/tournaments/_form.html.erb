@@ -1,6 +1,6 @@
 
   <div class="container">
-    <%= form_with model: @tournament, local: true do |form| %>
+    <%= form_for @tournament, local: true do |form| %>
     <div class="fieldset-green">
       <div class="field">
         <h4>Title: <%= form.text_field :title %></h4>
