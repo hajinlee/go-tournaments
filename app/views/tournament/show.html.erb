@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="pull-right">
+    <h4><%= image_tag("alt.jpg", :width => 300, :crop => "scale") %>
+  </div>
+
+  <div class="field">
+      <h2> <%= @tournament.title %> </h2>
+  </div>
+
+  <div class="field">
+    <h4><%= image_tag("calendar.svg", :size => "25x25") %>
+    <% if @tournament.start_date == @tournament.end_date %>
+      &nbsp&nbsp<%= @tournament.start_date %></h4>
+    <% else %>
+      &nbsp&nbsp<%= @tournament.start_date %> ~ <%= @tournament.end_date %></h4>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <h4><%= image_tag("location.svg", :size => "25x25") %>
+    &nbsp&nbsp<%= @tournament.venue %>,
+    &nbsp<%= @tournament.city %>,
+    &nbsp<%= @tournament.state %></h4>
+  </div>
+
+  <div class="field">
+    <% if @tournament.description? %>
+      <h4><%= image_tag("comment.svg", :size => "25x25") %>
+      &nbsp&nbsp<%= @tournament.description %></h4>
+    <% end %>
+  </div>
+
+  <table>
+    <tr>
+      <th><%= image_tag("go.png", :size => "25x25") %></th>
+      <th><%= image_tag("hourglass.svg", :size => "25x25") %></th>
+      <th><%= image_tag("graph.svg", :size => "25x25") %></th>
+      <th><%= image_tag("usd.svg", :size => "25x25") %></th>
+    </tr>
+    <tr>
+      <td><%= @tournament.game_rules %></td>
+      <td><%= @tournament.time_setting %></td>
+          <% if @tournament.is_rated? %>
+            <td> AGA Rated </td>
+          <% else %>
+            <td> Not Rated</td>
+          <% end %>
+      <td><%= @tournament.registration_fee %></td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <th><%= image_tag("clock.svg", :size => "25x25") %></th>
+      <th><%= image_tag("clock.svg", :size => "25x25") %></th>
+      <th><%= image_tag("organizer.svg", :size => "25x25") %></th>
+      <th><%= image_tag("contact.svg", :size => "25x25") %></th>
+    </tr>
+      <tr>
+        <td> Check-in: </td>
+        <td> First round: </td>
+        <td> Organizer: </td>
+        <td> Contact info: </td>
+      </tr>
+      <tr>
+        <td><% if @tournament.check_in_begins? %>
+              <%= @tournament.check_in_begins.time.strftime("%I:%M %p") %></td>
+            <% end %>
+        <td><% if @tournament.first_round_begins? %>
+              <%= @tournament.first_round_begins.time.strftime("%I:%M %p") %></td>
+            <% end %>
+        <td><%= @tournament.organizer %></td>
+        <td><%= @tournament.contact %></td>
+      </tr>
+    </table>
+
+    <div class="field">
+      <h5><%= link_to 'Edit', edit_tournament_path(@tournament) %>&nbsp&nbsp
+          <%= link_to 'Delete', tournament_path(@tournament),
+              method: :delete, data: { confirm: 'Are you sure?' } %></h5>
+    </div>
+</div>
