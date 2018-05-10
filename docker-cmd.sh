@@ -3,4 +3,4 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 
-docker-compose --project-name go-tournaments exec app $*
+docker-compose --project-name go-tournaments exec -T app $*
