@@ -63,7 +63,7 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-gem 'paperclip', '~> 4.3', '>= 4.3.6'
+#gem 'paperclip', '~> 4.3', '>= 4.3.6'
 
 gem 'devise', '~> 4.2'
 
