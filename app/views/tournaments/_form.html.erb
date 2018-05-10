@@ -1,6 +1,21 @@
 
   <div class="container">
     <%= form_for @tournament, local: true do |form| %>
+
+    <% if @tournament.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@tournament.errors.count, "error") %> prohibited
+        this page from being saved:
+      </h2>
+      <ul>
+        <% @tournament.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
     <div class="fieldset-green">
       <div class="field">
         <h4>Title: <%= form.text_field :title %></h4>
