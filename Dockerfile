@@ -2,7 +2,7 @@ FROM ruby:2.3.3
 
 RUN apt-get -y update
 
-RUN apt-get install -y sqlite3 libsqlite3-dev
+RUN apt-get install -y sqlite3 libsqlite3-dev imagemagick
 
 WORKDIR /usr/src/app
 
