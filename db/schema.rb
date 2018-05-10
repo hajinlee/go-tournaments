@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_07_174955) do
+ActiveRecord::Schema.define(version: 2018_05_10_041926) do
 
   create_table "tournaments", force: :cascade do |t|
     t.integer "tournament_id"
     t.string "title"
-    t.string "image"
     t.string "venue"
     t.string "city"
     t.string "state"
@@ -34,6 +33,10 @@ ActiveRecord::Schema.define(version: 2018_05_07_174955) do
     t.string "time_setting"
     t.time "check_in_begins"
     t.time "first_round_begins"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
   end
 
 end

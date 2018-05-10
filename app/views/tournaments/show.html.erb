@@ -1,6 +1,10 @@
 <div class="container">
   <div class="pull-right">
-    <h4><%= image_tag("alt.jpg", :width => 300, :crop => "scale") %>
+    <% if @tournament.image.exists? %>
+      <%= image_tag @tournament.image.url(:medium), :width => 400, :crop => "scale"  %>
+    <% else %>
+      <%= image_tag("alt.jpg", :width => 300, :crop => "scale") %>
+    <% end %>
   </div>
 
   <div class="field">

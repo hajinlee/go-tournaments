@@ -2,10 +2,11 @@
   <% @tournaments.each do |tournament| %>
     <div class="col-sm-4">
       <div class="fieldset-light">
-        <% if tournament.image == nil %>
-          <%= image_tag("alt.jpg", :class => "img-responsive") %>
+
+        <% if tournament.image.exists? %>
+          <%= image_tag tournament.image.url(:medium), :class => "img-responsive"  %>
         <% else %>
-          <%= tournament.image %>
+          <%= image_tag("alt.jpg", :class => "img-responsive") %>
         <% end %>
 
         <div class="field-sm">
