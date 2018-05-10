@@ -1,3 +1,8 @@
+# IMPORTANT!
+# any time you modify Gemfile, you MUST run this command against a running Docker image:
+# ./docker-cmd.sh bundle install
+# in order to update the Gemfile.lock. If you skip this step, you will break the Dockerfile build.
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
