@@ -2913,9 +2913,9 @@ a.btn.disabled, fieldset[disabled] a.btn {
 }
 
 .btn-danger {
-  color: #000000;
-  background-color: #f4c20d;
-  border-color: #f4c20d;
+  color: #fff;
+  background-color: #FA8072;
+  border-color: #FA8072;
 }
 .btn-danger:focus, .btn-danger.focus {
   color: #fff;
