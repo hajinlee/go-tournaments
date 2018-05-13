@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_10_151237) do
+ActiveRecord::Schema.define(version: 2018_05_13_045226) do
 
-  create_table "tournaments", force: :cascade do |t|
-    t.integer "tournament_id"
+  create_table "Tournaments", force: :cascade do |t|
     t.string "title"
     t.string "venue"
     t.string "city"
@@ -37,6 +36,15 @@ ActiveRecord::Schema.define(version: 2018_05_10_151237) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.integer "tournament_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tournament_id"], name: "index_registrations_on_tournament_id", unique: true
+    t.index ["user_id"], name: "index_registrations_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
