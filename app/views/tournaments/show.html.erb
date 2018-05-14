@@ -60,27 +60,35 @@
       <th><%= image_tag("organizer.svg", :size => "25x25") %></th>
       <th><%= image_tag("contact.svg", :size => "25x25") %></th>
     </tr>
-      <tr>
-        <td> Check-in: </td>
-        <td> First round: </td>
-        <td> Organizer: </td>
-        <td> Contact info: </td>
-      </tr>
-      <tr>
-        <td><% if @tournament.check_in_begins? %>
-              <%= @tournament.check_in_begins.time.strftime("%I:%M %p") %></td>
-            <% end %>
-        <td><% if @tournament.first_round_begins? %>
-              <%= @tournament.first_round_begins.time.strftime("%I:%M %p") %></td>
-            <% end %>
-        <td><%= @tournament.organizer %></td>
-        <td><%= @tournament.contact %></td>
-      </tr>
-    </table>
+    <tr>
+      <td> Check-in: </td>
+      <td> First round: </td>
+      <td> Organizer: </td>
+      <td> Contact info: </td>
+    </tr>
+    <tr>
+      <td><% if @tournament.check_in_begins? %>
+            <%= @tournament.check_in_begins.time.strftime("%I:%M %p") %></td>
+          <% end %>
+      <td><% if @tournament.first_round_begins? %>
+            <%= @tournament.first_round_begins.time.strftime("%I:%M %p") %></td>
+          <% end %>
+      <td><%= @tournament.organizer %></td>
+      <td><%= @tournament.contact %></td>
+    </tr>
+  </table>
 
-    <div class="field">
-      <h5><%= link_to 'Edit', edit_tournament_path(@tournament) %>&nbsp&nbsp
-          <%= link_to 'Delete', tournament_path(@tournament),
+  <div class="field">
+    <%= form_for @registration do |form| %>
+      <%= form.hidden_field :tournament_id, value: @tournament.id %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.submit 'Register', { class: 'btn-primary' } %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <h5><%= link_to 'Edit', edit_tournament_path(@tournament) %>&nbsp&nbsp
+        <%= link_to 'Delete', tournament_path(@tournament),
               method: :delete, data: { confirm: 'Are you sure?' } %></h5>
-    </div>
+  </div>
 </div>
