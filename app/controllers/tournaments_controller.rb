@@ -8,10 +8,12 @@ class TournamentsController < ApplicationController
 
   def show
     @tournament = Tournament.find(params[:id])
+    @registration = Registration.new
   end
 
   def new
     @tournament = Tournament.new
+
   end
 
   def edit
@@ -49,6 +51,7 @@ class TournamentsController < ApplicationController
 
     redirect_to root_path
   end
+
 
 
   private
