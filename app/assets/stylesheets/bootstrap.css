@@ -1796,6 +1796,60 @@ table {
     font-size: 18px;
 }
 
+#my_tournament_list {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+#my_tournament_list td, #my_tournament_list th {
+    border: 1px solid #ddd;
+    padding: 6px;
+    white-space: nowrap;
+}
+
+#my_tournament_list tr:nth-child(even){background-color: #f2f2f2;}
+
+#my_tournament_list tr:hover {background-color: #ddd;}
+
+#my_tournament_list th {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    background-color: #f0ad4e;
+    color: white;
+    font-size: 16px;
+}
+
+#my_registration_list {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+#my_registration_list td, #my_registration_list th {
+    border: 1px solid #ddd;
+    padding: 6px;
+    white-space: nowrap;
+}
+
+#my_registration_list tr:nth-child(even){background-color: #f2f2f2;}
+
+#my_registration_list tr:hover {background-color: #ddd;}
+
+#my_registration_list th {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    background-color: SlateBlue;
+    color: white;
+    font-size: 16px;
+}
+
 caption {
   padding-top: 8px;
   padding-bottom: 8px;

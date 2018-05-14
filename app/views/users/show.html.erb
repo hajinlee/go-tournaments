@@ -1,25 +1,18 @@
 <div class="container">
   <div class="field">
-    <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+    <h2><%= @user.first_name %> <%= @user.last_name %></h2>
   </div>
 
   <div class="field">
-    <h5><%= @user.email %></h5>
-  </div>
-
-  <div class="field">
-    <%= link_to "Edit Profile", edit_user_registration_path %>
-  </div>
-
-  <div class="field">
-      <a href="http://agagd.usgo.org/player/<%= @user.aga_number %>/" target="blank">My AGA Card</a>
+    <%= link_to "Edit Profile", edit_user_registration_path %>&nbsp&nbsp/&nbsp&nbsp
+    <a href="http://agagd.usgo.org/player/<%= @user.aga_number %>/" target="blank">AGA Player Card</a>
   </div>
 
   <div class="field">
     <h4>Registered Tournaments</h4>
   </div>
   <div class="field">
-    <table id="tournament_list">
+    <table id="my_registration_list">
       <tr>
         <th>Title</th>
         <th>Start Date</th>
@@ -44,7 +37,7 @@
       <h4>My Tournaments</h4>
     </div>
     <div class="field">
-      <table id="tournament_list">
+      <table id="my_tournament_list">
         <tr>
           <th>Title</th>
           <th>Start Date</th>
