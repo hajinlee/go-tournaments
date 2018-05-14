@@ -15,7 +15,7 @@
       </ul>
     </div>
   <% end %>
-  
+
     <div class="fieldset-green">
       <div class="field">
         <h4>Title: <%= form.text_field :title %></h4>
@@ -76,12 +76,7 @@
       <div class="field">
         <h4>Contact info:  <%= form.text_field :contact %></h4>
       </div>
-      <div class="field">
-        <h4>Password:  <%= form.password_field :password_digest %></h4>
-      </div>
-      <div class="field">
-        <p>Password is for editing or deleting this tournament page.</p>
-      </div>
+      <%= form.hidden_field :author_user_id, value: current_user.id %>
     </div>
 
     <div class="field">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_13_045226) do
+ActiveRecord::Schema.define(version: 2018_05_14_164156) do
 
   create_table "Tournaments", force: :cascade do |t|
     t.string "title"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2018_05_13_045226) do
     t.date "start_date"
     t.date "end_date"
     t.string "country"
-    t.string "password_digest"
     t.string "game_rules"
     t.boolean "is_rated"
     t.string "registration_fee"
@@ -36,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_05_13_045226) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.integer "author_user_id"
   end
 
   create_table "registrations", force: :cascade do |t|
