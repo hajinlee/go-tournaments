@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_14_164156) do
+ActiveRecord::Schema.define(version: 2018_05_14_175616) do
 
   create_table "Tournaments", force: :cascade do |t|
     t.string "title"
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 2018_05_14_164156) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tournament_id"], name: "index_registrations_on_tournament_id", unique: true
-    t.index ["user_id"], name: "index_registrations_on_user_id", unique: true
+    t.index ["tournament_id", "user_id"], name: "index_registrations_on_tournament_id_and_user_id", unique: true
+    t.index ["user_id"], name: "index_registrations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -14,4 +14,57 @@
   <div class="field">
       <a href="http://agagd.usgo.org/player/<%= @user.aga_number %>/" target="blank">My AGA Card</a>
   </div>
+
+  <div class="field">
+    <h4>Registered Tournaments</h4>
+  </div>
+  <div class="field">
+    <table id="tournament_list">
+      <tr>
+        <th>Title</th>
+        <th>Start Date</th>
+        <th>City</th>
+        <th></th>
+      </tr>
+
+      <% @registration.each do |r| %>
+
+        <tr>
+          <td><%= r.tournament.title %></td>
+          <td><%= r.tournament.start_date %></td>
+          <td><%= r.tournament.city %></td>
+          <td><%= link_to 'Show', tournament_path(@tournament) %></td>
+        </tr>
+      <% end %>
+
+    </table>
+    </div>
+
+    <div class="field">
+      <h4>My Tournaments</h4>
+    </div>
+    <div class="field">
+      <table id="tournament_list">
+        <tr>
+          <th>Title</th>
+          <th>Start Date</th>
+          <th>City</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+
+        <% @tournament.each do |r| %>
+          <tr>
+            <td><%= r.title %></td>
+            <td><%= r.start_date %></td>
+            <td><%= r.city %></td>
+            <td><%= link_to 'Show', tournament_path(@tournament) %></td>
+            <td><%= link_to 'Edit', edit_tournament_path(@tournament) %></td>
+            <td><%= link_to 'Delete', tournament_path(@tournament),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </table>
+      </div>
 </div>
