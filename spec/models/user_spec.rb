@@ -13,8 +13,8 @@ RSpec.describe User, type: :model do
     it 'is downcased when saved' do
       u = create(:user, email: capital)
       expect(u.reload.email).to eq(capital.downcase)
-      expect(User.where(email: capital.downcase).first).to eq(u)
-      expect(User.where(email: capital).first).to eq(nil)
+      expect(User.find_by(email: capital.downcase)).to eq(u)
+      expect(User.find_by(email: capital)).to eq(nil)
     end
   end
 

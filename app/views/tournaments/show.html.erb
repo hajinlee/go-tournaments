@@ -99,7 +99,7 @@
       <% if current_user %>
         <%= form.hidden_field :user_id, value: current_user.id %>
       <% end %>
-    <%= form.submit 'Register', { class: 'btn-primary' } %>
+    <%= form.submit 'Register', { class: 'btn-primary', data: { disable_with: 'Registered' } } %>
     <% end %>
   </div>
 
