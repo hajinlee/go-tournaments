@@ -9,5 +9,8 @@ class User < ApplicationRecord
   validates :password,
     :presence => true,
     :confirmation => true
+  
+    has_many :registrations
+    has_many :tournaments, through: :registrations
     
 end
