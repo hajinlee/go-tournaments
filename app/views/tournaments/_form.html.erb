@@ -3,18 +3,18 @@
     <%= form_for @tournament, local: true do |form| %>
 
     <% if @tournament.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@tournament.errors.count, "error") %> prohibited
-        this page from being saved:
-      </h2>
-      <ul>
-        <% @tournament.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@tournament.errors.count, "error") %> prohibited
+          this page from being saved:
+        </h2>
+        <ul>
+          <% @tournament.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
     <div class="fieldset-green">
       <div class="field">
@@ -36,11 +36,11 @@
       </div>
       <div class="field">
         <h4>Description:</h4>
-        <h4>&nbsp&nbsp<%= form.text_area :description %></h4>
+        <h4>&nbsp;&nbsp;<%= form.text_area :description %></h4>
       </div>
       <div class="field">
-        <h4>Image:&nbsp</h4>
-        <h5>&nbsp&nbsp<%= form.file_field :image %></h5>
+        <h4>Image:&nbsp;</h4>
+        <h5>&nbsp;&nbsp;<%= form.file_field :image %></h5>
       </div>
     </div>
 
@@ -50,7 +50,7 @@
       </div>
       <div class="field">
         <h4>Game Rules:</h4>
-        <h4>&nbsp&nbsp<%= form.text_area :game_rules %></h4>
+        <h4>&nbsp;&nbsp;<%= form.text_area :game_rules %></h4>
       </div>
       <div class="field">
         <h4>Time Setting: <%= form.text_field :time_setting %></h4>
