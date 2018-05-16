@@ -56,7 +56,26 @@ class TournamentsController < ApplicationController
 
   private
     def tournament_params
-      params[:tournament].permit(:title, :image, :start_date, :end_date, :venue, :city, :state, :country, :description, :organizer, :contact, :password_digest, :is_rated, :game_rules, :time_setting, :registration_fee, :check_in_begins, :first_round_begins)
+      params[:tournament].permit(
+        :title, 
+        :image, 
+        :start_date, 
+        :end_date, 
+        :venue, 
+        :city, 
+        :state, 
+        :country, 
+        :description, 
+        :organizer, 
+        :contact,
+        :is_rated, 
+        :game_rules, 
+        :time_setting, 
+        :registration_fee, 
+        :check_in_begins, 
+        :first_round_begins,
+        :author_user_id
+        )
     end
 
 end
