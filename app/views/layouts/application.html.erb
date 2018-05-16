@@ -4,34 +4,36 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-
+    <title><%= content_for?(:title) ? yield(:title) : "Go Tournaments" %></title>
+    
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
-    
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/">Go Tournaments</a>
-        </div>
+  <body>    
 
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <%= link_to "Create Tournament", new_tournament_path, { class: 'btn btn-danger navbar-btn' } %>
-            <%= link_to "My Page", current_user, { class: 'btn btn-success navbar-btn' } %>
-            <%= link_to "Log-out", destroy_user_session_path, { :method => :delete, class: 'btn btn-warning navbar-btn' } %>
-          <% else %>
-            <%= link_to "Sign up", new_user_registration_path, { class: 'btn btn-success navbar-btn' } %>
-            <%= link_to "Log-in", new_user_session_path, { class: 'btn btn-warning navbar-btn' } %>
-          <% end %>
-        </ul>
+    <header id="header" class="topbar-header">
+    </header>
 
-      </div>
-    </nav>
+    <div class="top-bar">
+      
+      <h3><a href="/" class="top-bar title">Go Tournaments</a></h3>
+      
+      <ul class="menu">
+        <% if user_signed_in? %>
+
+          <li><%= link_to "Create Tournament", new_tournament_path, {class: "top-bar right"} %></li>
+          <li><%= link_to "My Page", current_user, {class: "top-bar right"} %></li>
+          <li><%= link_to "Log-out", destroy_user_session_path, {:method => :delete, class: "top-bar right"} %></li>
+        <% else %>
+
+          <li><%= link_to "Sign up", new_user_registration_path, {class: "top-bar right"} %></li>
+          <li><%= link_to "Log-in", new_user_session_path, {class: "top-bar right"} %></li>
+        <% end %>
+      </ul>      
+    </div>
     
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
@@ -40,6 +42,6 @@
     
     <div class="modal-footer">
         <p>Designed by Hajin Lee</p>
-
+    </div>
   </body>
 </html>

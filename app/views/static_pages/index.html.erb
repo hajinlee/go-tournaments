@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <% @tournaments.each do |tournament| %>
     <div class="col-sm-4">
-      <div class="fieldset-light">
+      <div class="card card-product-hover">
 
         <% if tournament.image.exists? %>
           <%= image_tag tournament.image.url(:medium), :class => "img-responsive"  %>
@@ -10,7 +10,7 @@
         <% end %>
 
         <div class="field-sm">
-          <h5><%= link_to(tournament.title, tournament_path(tournament)) %></h5>
+         <h3><%= link_to(tournament.title, tournament_path(tournament), {class: "card-product-hover-title"}) %></h3>
         </div>
 
         <div class="field-sm">

@@ -16,72 +16,67 @@
       </div>
     <% end %>
 
-    <div class="fieldset-green">
+    <div class="forms">
+      <div class="fieldset">
+      
+        Title: <%= form.text_field :title %>
+       
+      
+        Start Date: <%= form.date_field :start_date %>
+        End Date: <%= form.date_field :end_date %>
+        
       <div class="field">
-        <h4>Title: <%= form.text_field :title %></h4>
+        Venue: <%= form.text_field :venue %>
       </div>
       <div class="field">
-        <h4>Start Date: <%= form.date_field :start_date %>
-        &nbsp&nbspEnd Date: <%= form.date_field :end_date %></h4>
+        City: <%= form.text_field :city %>
+        State: <%= form.text_field :state, :placeholder => 'Ex. CA' %>   
+        Country: <%= form.text_field :country %>
       </div>
       <div class="field">
-        <h4>Venue: <%= form.text_field :venue %></h4>
+        Description: <%= form.text_area :description %>
       </div>
       <div class="field">
-        <h4>City: <%= form.text_field :city %>
-        &nbsp&nbspState: <%= form.text_field :state, :placeholder => 'Ex. CA' %></h4>
-      </div>
-      <div class="field">
-        <h4>Country: <%= form.text_field :country %><h4>
-      </div>
-      <div class="field">
-        <h4>Description:</h4>
-        <h4>&nbsp;&nbsp;<%= form.text_area :description %></h4>
-      </div>
-      <div class="field">
-        <h4>Image:&nbsp;</h4>
-        <h5>&nbsp;&nbsp;<%= form.file_field :image %></h5>
+        Image: <%= form.file_field :image %>
       </div>
     </div>
 
-    <div class="fieldset-yellow">
+    <div class="fieldset">
       <div class="field">
-        <h4>AGA Rated:  <%= form.check_box :is_rated %></h4>
+        AGA Rated:  <%= form.check_box :is_rated %>
       </div>
       <div class="field">
-        <h4>Game Rules:</h4>
-        <h4>&nbsp;&nbsp;<%= form.text_area :game_rules %></h4>
+        Game Rules: <%= form.text_area :game_rules %>
       </div>
       <div class="field">
-        <h4>Time Setting: <%= form.text_field :time_setting %></h4>
-      </div>
-    </div>
-
-    <div class="fieldset-blue">
-      <div class="field">
-        <h4>Registration Fee: <%= form.text_field :registration_fee %></h4>
-      </div>
-      <div class="field">
-        <h4> Check-in begins at:  <%= form.time_field :check_in_begins %></h4>
-      </div>
-      <div class="field">
-        <h4> First round begins at:  <%= form.time_field :first_round_begins %></h4>
+        Time Setting: <%= form.text_field :time_setting %>
       </div>
     </div>
 
-    <div class="fieldset-red">
+    <div class="fieldset">
       <div class="field">
-        <h4>Organizer:  <%= form.text_field :organizer %></h4>
+        Registration Fee: <%= form.text_field :registration_fee %>
       </div>
       <div class="field">
-        <h4>Contact info:  <%= form.text_field :contact %></h4>
+        Check-in begins at:  <%= form.time_field :check_in_begins %>
       </div>
+      <div class="field">
+        First round begins at:  <%= form.time_field :first_round_begins %>
+      </div>
+    </div>
+
+    <div class="fieldset">
+      
+      Organizer:  <%= form.text_field :organizer %>
+      
+      Contact info:  <%= form.text_field :contact %>
+      
       <%= form.hidden_field :author_user_id, value: current_user.id %>
     </div>
 
-    <div class="field">
-      <%= form.submit 'Submit', { class: 'btn-primary' } %>
-    </div>
+    
+    <%= form.submit 'Submit', { class: "button large" } %>
+    
 
 <% end %>
 </div>
