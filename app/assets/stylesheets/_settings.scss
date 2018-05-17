@@ -292,6 +292,7 @@ $button-sizes: (
   tiny: 0.6rem,
   small: 0.75rem,
   default: 0.9rem,
+  medium: 1.5rem,
   large: 2.0rem,
 );
 $button-palette: $foundation-palette;
@@ -541,6 +542,21 @@ $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 $input-number-spinners: true;
 $input-radius: $global-radius;
 $form-button-radius: $global-radius;
+
+
+.log-in-form {
+  border: 1px solid #cacaca;
+  padding: 2rem;
+  border-radius: 0;
+  margin: auto;
+  width: 30rem;
+  padding: 10px;
+
+  label {
+    font-size: 15px;
+    width: 28rem;
+  }
+}
 
 // 21. Label
 // ---------
