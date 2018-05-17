@@ -20,11 +20,6 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.find(params[:id])
   end
 
-  # NOTE: currently the form encloses parameter names within "tournament[xxx]" in update mode,
-  # but does NOT enclose the parameters in create mode.
-  # therefore, we have to duplicate the params.permit() logic to extract from the "tournament[]" in
-  # the update method, but NOT extract in the create method.
-
   def create
     @tournament = Tournament.new(tournament_params)
 

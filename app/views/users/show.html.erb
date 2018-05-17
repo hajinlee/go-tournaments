@@ -18,6 +18,7 @@
         <th>Start Date</th>
         <th>City</th>
         <th></th>
+        <th></th>
       </tr>
 
       <% @registration.each do |r| %>
@@ -26,7 +27,9 @@
           <td><%= r.tournament.title %></td>
           <td><%= r.tournament.start_date %></td>
           <td><%= r.tournament.city %></td>
-          <td><%= link_to 'Show', tournament_path %></td>
+          <td><%= link_to "Show", tournament_path(r.tournament.id) %></td>
+          <td><%= link_to "Unregister", registration_path(r.id),
+                  method: :delete, data: {confirm: "Are you sure?"}%></td>
         </tr>
       <% end %>
 
@@ -47,15 +50,15 @@
           <th></th>
         </tr>
 
-        <% @tournament.each do |r| %>
+        <% @tournament.each do |t| %>
           <tr>
-            <td><%= r.title %></td>
-            <td><%= r.start_date %></td>
-            <td><%= r.city %></td>
-            <td><%= link_to 'Show', tournament_path %></td>
-            <td><%= link_to 'Edit', edit_tournament_path %></td>
-            <td><%= link_to 'Delete', tournament_path,
-                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= t.title %></td>
+            <td><%= t.start_date %></td>
+            <td><%= t.city %></td>
+            <td><%= link_to "Show", tournament_path(t.id) %></td>
+            <td><%= link_to "Edit", edit_tournament_path(t.id) %></td>
+            <td><%= link_to "Delete", tournament_path(t.id),
+                    method: :delete, data: {confirm: "Are you sure?"} %></td>
           </tr>
         <% end %>
       </table>
