@@ -1772,7 +1772,6 @@ table {
 }
 
 #tournament_list {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -1791,13 +1790,12 @@ table {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #4CAF50;
+    background-color: #C0B283;
     color: white;
     font-size: 18px;
 }
 
 #my_tournament_list {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 10px;
@@ -1818,13 +1816,12 @@ table {
     padding-top: 8px;
     padding-bottom: 8px;
     text-align: center;
-    background-color: #f0ad4e;
+    background-color: #373737;
     color: white;
     font-size: 16px;
 }
 
 #my_registration_list {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 10px;
@@ -1845,7 +1842,7 @@ table {
     padding-top: 8px;
     padding-bottom: 8px;
     text-align: center;
-    background-color: SlateBlue;
+    background-color: #C0B283;
     color: white;
     font-size: 16px;
 }
