@@ -558,6 +558,18 @@ $form-button-radius: $global-radius;
   }
 }
 
+.sign-up-form {
+  border: 1px solid #cacaca;
+  padding: 2rem;
+  border-radius: 0;
+  margin: auto;
+  width: 45rem;
+  padding: 10px;
+  
+  label {
+  font-size: 15px;
+  }
+}
 // 21. Label
 // ---------
 
