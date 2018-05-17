@@ -1,26 +1,23 @@
-<form class="log-in-form">
-  <h3 class="text-center">Log in</h3>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="log-in-form">
+<h3 class="text-center">Log in</h3>
 
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-    <label><%= f.label :email %></label>
-    <label><%= f.email_field :email, autofocus: true, autocomplete: "email" %></label>
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
 
-    <label><%= f.label :password %></label>
-    <label><%= f.password_field :password, autocomplete: "off" %></label>
-    
-    <% if devise_mapping.rememberable? -%>
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off" %>
+
+  <% if devise_mapping.rememberable? -%>
 
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
-    <% end -%>
 
+  <% end -%>
 
     <%= f.submit "Log in", {class: "button medium expanded"} %>
   <% end %>
-</form>
-    <%= render "devise/shared/links" %>
+    <%= link_to "Forgot your password?", new_password_path(resource_name) %>
 
-
-
-
+</div>
