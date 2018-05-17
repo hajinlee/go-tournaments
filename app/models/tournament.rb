@@ -7,6 +7,6 @@ class Tournament < ApplicationRecord
   validates_attachment_file_name :image, matches: [/png\z/, /jpe?g\z/]
   validates_with AttachmentSizeValidator, attributes: :image, less_than: 3.megabytes
 
-  has_many :registrations
+  has_many :registrations, dependent: :destroy
   has_many :users, through: :registrations
 end

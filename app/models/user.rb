@@ -10,7 +10,7 @@ class User < ApplicationRecord
     :presence => true,
     :confirmation => true
   
-  has_many :registrations
+  has_many :registrations, dependent: :destroy
   has_many :tournaments, through: :registrations
     
 end
