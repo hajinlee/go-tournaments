@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
-  
+
   def destroy
     @registration = Registration.find(params[:id])
     @registration.destroy

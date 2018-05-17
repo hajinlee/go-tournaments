@@ -3,7 +3,7 @@ Rails.application.configure do
   
   # treat any unrouteable private IP as whitelisted for dev access
   # (required for running within a Docker container)
-  config.web_console.whitelisted_ips = ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
+  config.web_console.whitelisted_ips = ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -65,6 +65,4 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  
-
 end

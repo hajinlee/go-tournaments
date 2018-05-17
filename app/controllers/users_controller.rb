@@ -4,5 +4,4 @@ class UsersController < ApplicationController
     @tournament = Tournament.where("author_user_id = ?", @user.id).order("start_date")
     @registration = Registration.where("user_id = ?", @user.id)
   end
-  
 end
