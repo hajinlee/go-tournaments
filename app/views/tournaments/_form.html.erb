@@ -1,6 +1,5 @@
-
-  <div class="container">
-    <%= form_for @tournament, local: true do |form| %>
+<div class="tournament-form">
+  <%= form_for @tournament, local: true do |f| %>
 
     <% if @tournament.errors.any? %>
       <div id="error_explanation">
@@ -16,67 +15,67 @@
       </div>
     <% end %>
 
-    <div class="forms">
-      <div class="fieldset">
-      
-        Title: <%= form.text_field :title %>
+    <div class="fieldset">
+      <%= f.label :title, "Tournament Title:" %>
+      <%= f.text_field :title %>
        
+      <%= f.label :start_date, "Start Date:" %>
+      <%= f.date_field :start_date %>
       
-        Start Date: <%= form.date_field :start_date %>
-        End Date: <%= form.date_field :end_date %>
+      <%= f.label :end_date, "End Date:" %>
+      <%= f.date_field :end_date %>
         
-      <div class="field">
-        Venue: <%= form.text_field :venue %>
-      </div>
-      <div class="field">
-        City: <%= form.text_field :city %>
-        State: <%= form.text_field :state, :placeholder => 'Ex. CA' %>   
-        Country: <%= form.text_field :country %>
-      </div>
-      <div class="field">
-        Description: <%= form.text_area :description %>
-      </div>
-      <div class="field">
-        Image: <%= form.file_field :image %>
-      </div>
+      <%= f.label :venue, "Venue:" %>
+      <%= f.text_field :venue %>
+
+      <%= f.label :city, "City:" %>
+      <%= f.text_field :city %>
+      
+      <%= f.label :state, "State:" %>
+      <%= f.text_field :state, placeholder: "Ex. CA" %>
+      
+      <%= f.label :country, "Country:" %>   
+      <%= f.text_field :country %>
+      
+      <%= f.label :description, "Notes:" %>
+      <%= f.text_area :description, placeholder: "Any side events or special guests?" %>
+      
+      <%= f.label :image, "Tournament Picture:" %>
+      <%= f.file_field :image %>
     </div>
 
     <div class="fieldset">
-      <div class="field">
-        AGA Rated:  <%= form.check_box :is_rated %>
-      </div>
-      <div class="field">
-        Game Rules: <%= form.text_area :game_rules %>
-      </div>
-      <div class="field">
-        Time Setting: <%= form.text_field :time_setting %>
-      </div>
+      <%= f.label :is_rate, "AGA Rated?" %>
+      <%= f.check_box :is_rated %><br />
+      
+      <%= f.label :game_rules, "Game Rules:" %>
+      <%= f.text_field :game_rules, placeholder: "AGA Rules? Japanese Rules? Ing Rules?" %>
+
+      <%= f.label :time_setting, "Time Setting:" %>
+      <%= f.text_field :time_setting, placeholder: "How much time per player for each game?" %>
     </div>
 
     <div class="fieldset">
-      <div class="field">
-        Registration Fee: <%= form.text_field :registration_fee %>
-      </div>
-      <div class="field">
-        Check-in begins at:  <%= form.time_field :check_in_begins %>
-      </div>
-      <div class="field">
-        First round begins at:  <%= form.time_field :first_round_begins %>
-      </div>
+      <%= f.label :registration_fee, "Registration Fee:" %>
+      <%= f.text_field :registration_fee %>
+
+      <%= f.label :check_in_begins, "Check-in begins at:" %>
+      <%= f.time_field :check_in_begins %>
+
+      <%= f.label :first_round_begins, "First round begins at:" %>
+      <%= f.time_field :first_round_begins %>
     </div>
 
     <div class="fieldset">
+      <%= f.label :organizer, "Organizer:" %>    
+      <%= f.text_field :organizer %>
       
-      Organizer:  <%= form.text_field :organizer %>
+      <%= f.label :contact, "Contact info:" %>
+      <%= f.text_field :contact, placeholder: "Email or phone number for inquery" %>
       
-      Contact info:  <%= form.text_field :contact %>
-      
-      <%= form.hidden_field :author_user_id, value: current_user.id %>
+      <%= f.hidden_field :author_user_id, value: current_user.id %>
     </div>
-
     
-    <%= form.submit 'Submit', { class: "button large" } %>
-    
-
+    <%= f.submit 'Submit', { class: "button medium expanded" } %>
 <% end %>
 </div>
