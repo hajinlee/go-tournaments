@@ -9,7 +9,7 @@ describe "user sign up path", type: :feature do
     it "saves a new user" do
       fill_in "First Name:", with: "Iron"
       fill_in "Last Name:", with: "Man"
-      fill_in "Email:", with: "iron@man.gr"
+      fill_in "Email:", with: "iron@man.com"
       fill_in "Password:", with: "123456"
       fill_in "Password Confirmation:", with: "123456"
       click_button "Sign up"
