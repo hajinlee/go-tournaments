@@ -11,6 +11,11 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def show
+    @tournament = Tournament.find(params[:id])
+    @registration = Registration.where("tournament_id = ?", @tournament.id)
+  end
+
   def destroy
     @registration = Registration.find(params[:id])
     @registration.destroy

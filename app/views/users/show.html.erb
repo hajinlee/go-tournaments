@@ -27,7 +27,7 @@
           <td><%= r.tournament.title %></td>
           <td><%= r.tournament.start_date %></td>
           <td><%= r.tournament.city %></td>
-          <td><%= link_to "Show", tournament_path(r.tournament.id) %></td>
+          <td><%= link_to "Tournament Page", tournament_path(r.tournament.id) %></td>
           <td><%= link_to "Unregister", registration_path(r.id),
                   method: :delete, data: {confirm: "Are you sure?"}%></td>
         </tr>
@@ -48,6 +48,7 @@
           <th></th>
           <th></th>
           <th></th>
+          <th></th>
         </tr>
 
         <% @tournament.each do |t| %>
@@ -55,7 +56,8 @@
             <td><%= t.title %></td>
             <td><%= t.start_date %></td>
             <td><%= t.city %></td>
-            <td><%= link_to "Show", tournament_path(t.id) %></td>
+            <td><%= link_to "Registrations", registration_path(t.id) %></td>
+            <td><%= link_to "Tournament Page", tournament_path(t.id) %></td>
             <td><%= link_to "Edit", edit_tournament_path(t.id) %></td>
             <td><%= link_to "Delete", tournament_path(t.id),
                     method: :delete, data: {confirm: "Are you sure?"} %></td>
