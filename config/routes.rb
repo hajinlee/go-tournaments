@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   root "static_pages#index"
 
   devise_for :users, path: "accounts"
-  resources :users, :only => [:show]
+
+  authenticate :user do
+    resources :users, only: [:show]
+  end
 
   resources :registrations
 end
