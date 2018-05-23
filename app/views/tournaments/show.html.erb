@@ -82,18 +82,19 @@
     <%= form_for @registration do |form| %>
 
       <%= form.hidden_field :tournament_id, value: @tournament.id %>
+      
       <% if current_user %>
         <%= form.hidden_field :user_id, value: current_user.id %>
-      <% end %>
-      <% if @registrations.exists?(user_id: current_user.id, tournament_id: @tournament.id) %>
-        <%= form.submit "Registered", { class: "button medium", disabled: true }%>
-      <% elsif !current_user.aga_number and @tournament.is_rated %>
-        <%= form.submit "AGA number is required to register", { class: "button medium", disabled: true }%>
+        <% if @registrations.exists?(user_id: current_user.id, tournament_id: @tournament.id) %>
+          <%= form.submit "Registered", { class: "button medium", disabled: true }%>
+        <% elsif !current_user.aga_number and @tournament.is_rated %>
+          <%= form.submit "AGA number is required to register", { class: "button medium", disabled: true }%>
+        <% else %>
+          <%= form.submit 'Register', { class: "button medium" } %>
+        <% end %>
       <% else %>
-        <%= form.submit 'Register', { class: "button medium" } %>
+        <%= form.submit "Log in is required to register", { class: "button medium", disabled: true }%>
       <% end %>
     <% end %>
   </div>
-
-
 </div>
