@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :tournaments
+  resources :tournaments, :registrations
 
   root "static_pages#index"
 
@@ -9,6 +9,4 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :users, only: [:show]
   end
-
-  resources :registrations
 end
