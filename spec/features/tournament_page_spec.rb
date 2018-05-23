@@ -25,6 +25,9 @@ describe "create tournament path", type: :feature do
       fill_in "Contact info:", with: "to the test"
       click_button "Submit"
       expect(page).to have_content "Bot Tournament"
+      click_link "Go Tournaments"
+      click_link "All Tournaments List"
+      expect(page).to have_content "Bot Tournament"
     end
   end
 
