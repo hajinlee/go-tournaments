@@ -22,7 +22,7 @@
       </tr>
 
       <% @registration.each do |r| %>
-
+        <% if r.tournament.start_date > Date.today %>
         <tr>
           <td><%= r.tournament.title %></td>
           <td><%= r.tournament.start_date %></td>
@@ -31,6 +31,7 @@
           <td><%= link_to "Unregister", registration_path(r.id),
                   method: :delete, data: {confirm: "Are you sure?"}%></td>
         </tr>
+        <% end %>
       <% end %>
 
     </table>
@@ -52,6 +53,7 @@
         </tr>
 
         <% @tournament.each do |t| %>
+          <% if t.start_date > Date.today %>
           <tr>
             <td><%= t.title %></td>
             <td><%= t.start_date %></td>
@@ -62,6 +64,7 @@
             <td><%= link_to "Delete", tournament_path(t.id),
                     method: :delete, data: {confirm: "Are you sure?"} %></td>
           </tr>
+          <% end %>
         <% end %>
       </table>
       </div>
