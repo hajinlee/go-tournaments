@@ -81,25 +81,15 @@
   <div class="field">
     <%= form_for @registration do |form| %>
 
-    <% if @registration.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@registration.errors.count, "error") %> stopped
-        this registration:
-      </h2>
-      <ul>
-        <% @registration.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
       <%= form.hidden_field :tournament_id, value: @tournament.id %>
       <% if current_user %>
         <%= form.hidden_field :user_id, value: current_user.id %>
       <% end %>
-    <%= form.submit 'Register', { class: "button medium", data: { disable_with: 'Registered' } } %>
+      <% if @registrations.exists?(user_id: current_user.id, tournament_id: @tournament.id) %>
+        <%= form.submit "Registered", { class: "button medium", disabled: true }%>
+      <% else %>
+        <%= form.submit 'Register', { class: "button medium" } %>
+      <% end %>
     <% end %>
   </div>
 

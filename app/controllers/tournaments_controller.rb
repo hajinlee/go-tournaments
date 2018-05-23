@@ -9,6 +9,7 @@ class TournamentsController < ApplicationController
   def show
     @tournament = Tournament.find(params[:id])
     @registration = Registration.new
+    @registrations = Registration.all
   end
 
   def new
