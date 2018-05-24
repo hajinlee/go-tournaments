@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
 
@@ -8,9 +8,9 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'email' do
-    let(:capital) { 'Asdf@example.com' }
-    it 'is downcased when saved' do
+  describe "email" do
+    let(:capital) { "Asdf@example.com" }
+    it "is downcased when saved" do
       u = create(:user, email: capital)
       expect(u.reload.email).to eq(capital.downcase)
       expect(User.find_by(email: capital.downcase)).to eq(u)
@@ -18,9 +18,9 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '#valid' do
+  describe "#valid" do
     it "is invalid if email is invalid" do
-      user = build :user, :email => "herpderp"
+      user = build :user, :email => "notvalid"
       expect(user).not_to be_valid
       expect(user.errors).to include(:email)
     end
