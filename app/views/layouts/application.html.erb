@@ -13,12 +13,10 @@
   </head>
 
   <body>    
-
     <header id="header" class="topbar-header">
     </header>
 
-    <div class="top-bar">
-      
+    <div class="top-bar">     
       <h3><a href="/" class="top-bar title">Go Tournaments</a></h3>
       
       <ul class="menu">
@@ -35,10 +33,12 @@
       </ul>      
     </div>
     
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render '/layouts/display_notice' if notice.present? %>
+    <%= render '/layouts/display_alert' if alert.present? %>
 
-    <%= yield %>
+    <div class="main-content">
+      <%= yield %>
+    </div>
     
     <div class="modal-footer">
         <p>Designed by Hajin Lee</p>
