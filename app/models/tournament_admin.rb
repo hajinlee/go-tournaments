@@ -1,4 +1,4 @@
-class Registration < ApplicationRecord
+class TournamentAdmin < ApplicationRecord
   validates :tournament_id, :user_id, presence: true
 
   belongs_to :tournament

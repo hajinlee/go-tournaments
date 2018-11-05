@@ -1,100 +1,97 @@
-<div class="container">
-  <div class="pull-right">
-    <% if @tournament.image.exists? %>
-      <%= image_tag @tournament.image.url(:medium), :width => 400, :crop => "scale"  %>
-    <% else %>
-      <%= image_tag("alt.jpg", :width => 300, :crop => "scale") %>
-    <% end %>
-  </div>
+<% presenter = TournamentPresenter.new(self, @tournament) %>
 
-  <div id="tournament_field" class="field">
-      <h2> <%= @tournament.title %> </h2>
-  </div>
+<div class="grid-x grid-padding-x">
+  <%= presenter.top_section %>
 
-  <div id="tournament_field" class="field">
-    <h4><%= image_tag("calendar.svg", :size => "25x25") %>
-    <% if @tournament.start_date == @tournament.end_date %>
-      &nbsp&nbsp<%= @tournament.start_date %></h4>
-    <% else %>
-      &nbsp&nbsp<%= @tournament.start_date %> ~ <%= @tournament.end_date %></h4>
-    <% end %>
-  </div>
+  <div class="cell">
+    <h4 class="subtitle">Tournament Details</h4>
+      <div class="grid-x grid-padding-x large-up-2 medium-up-2">
+        <div class="cell tournament-detail">
+          <div class="grid-x grid-padding-x">
 
-  <div id="tournament_field" class="field">
-    <h4><%= image_tag("location.svg", :size => "25x25") %>
-    &nbsp&nbsp<%= @tournament.venue %>,
-    &nbsp<%= @tournament.city %>,
-    &nbsp<%= @tournament.state %></h4>
-  </div>
+            <div class="cell large-1 medium-1">
+              <p><%= fa_icon('list-alt', type: 'regular', class: 'fa-lg') %></p>
+              <p><%= fa_icon('hourglass-half', class: 'fa-lg') %></p>
+              <p><%= fa_icon("chart-line", class: 'fa-lg') %></p>
+              <p><%= fa_icon("dollar-sign", class: 'fa-lg') %></p>
+            </div>
 
-  <div class="field">
-    <% if @tournament.description? %>
-      <h4><%= image_tag("comment.svg", :size => "25x25") %>
-      &nbsp&nbsp<%= @tournament.description %></h4>
-    <% end %>
-  </div>
+            <div class="cell large-5 medium-5">
+              <p>Game rules:</p>
+              <p>Rating:</p>
+              <p>Time limit:</p>
+              <p>Registration fee:</p>
+            </div>
 
-  <table id="tournament_details">
-    <tr>
-      <th><%= image_tag("go.png", :size => "25x25") %></th>
-      <th><%= image_tag("hourglass.svg", :size => "25x25") %></th>
-      <th><%= image_tag("graph.svg", :size => "25x25") %></th>
-      <th><%= image_tag("usd.svg", :size => "25x25") %></th>
-    </tr>
-    <tr>
-      <td><%= @tournament.game_rules %></td>
-      <td><%= @tournament.time_setting %></td>
-          <% if @tournament.is_rated? %>
-            <td> AGA Rated </td>
-          <% else %>
-            <td> Not Rated</td>
-          <% end %>
-      <td><%= @tournament.registration_fee %></td>
-    </tr>
-  </table>
+            <div class="cell large-6 medium-6">
+              <p><%= @tournament.game_rules %></p>
+                  <% if @tournament.is_rated? %>
+                    <p> AGA Rated </p>
+                  <% else %>
+                    <p> Not Rated</p>
+                  <% end %>
+              <p><%= @tournament.time_setting.blank? ? 'Unspecified' : @tournament.time_setting %></p>
+              <p><%= @tournament.registration_fee %></p>
+            </div>
+          </div>
+        </div>
 
-  <table id="tournament_details">
-    <tr>
-      <th><%= image_tag("clock.svg", :size => "25x25") %></th>
-      <th><%= image_tag("clock.svg", :size => "25x25") %></th>
-      <th><%= image_tag("organizer.svg", :size => "25x25") %></th>
-      <th><%= image_tag("contact.svg", :size => "25x25") %></th>
-    </tr>
-    <tr>
-      <td> Check-in: </td>
-      <td> First round: </td>
-      <td> Organizer: </td>
-      <td> Contact info: </td>
-    </tr>
-    <tr>
-      <td><% if @tournament.check_in_begins? %>
-            <%= @tournament.check_in_begins.time.strftime("%I:%M %p") %></td>
-          <% end %>
-      <td><% if @tournament.first_round_begins? %>
-            <%= @tournament.first_round_begins.time.strftime("%I:%M %p") %></td>
-          <% end %>
-      <td><%= @tournament.organizer %></td>
-      <td><%= @tournament.contact %></td>
-    </tr>
-  </table>
+        <div class="cell tournament-detail">
+          <div class="grid-x grid-padding-x">
 
-  <div class="field">
-    <%= form_for @registration do |form| %>
+            <div class="cell large-1 medium-1">
+              <p><%= fa_icon("clock", type: 'regular', class: 'fa-lg') %></p>
+              <p><%= fa_icon("clock", type: 'regular', class: 'fa-lg') %></p>
+              <p><%= fa_icon("people-carry", class: 'fa-lg') %></p>
+              <p><%= fa_icon("comment-dots", type: 'regular', class: 'fa-lg') %></p>
+            </div>
 
-      <%= form.hidden_field :tournament_id, value: @tournament.id %>
-      
-      <% if current_user %>
-        <%= form.hidden_field :user_id, value: current_user.id %>
-        <% if @registrations.exists?(user_id: current_user.id, tournament_id: @tournament.id) %>
-          <%= form.submit "Registered", { class: "button medium", disabled: true }%>
-        <% elsif !current_user.aga_number and @tournament.is_rated %>
-          <%= form.submit "AGA number is required to register", { class: "button medium", disabled: true }%>
-        <% else %>
-          <%= form.submit 'Register', { class: "button medium" } %>
-        <% end %>
-      <% else %>
-        <%= form.submit "Log in is required to register", { class: "button medium", disabled: true }%>
-      <% end %>
-    <% end %>
+            <div class="cell large-5 medium-5">
+              <p> Check-in begins: </p>
+              <p> First round begins: </p>
+              <p> Organizer: </p>
+              <p> Contact info: </p>
+            </div>
+
+            <div class="cell large-6 medium-6">
+              <% if @tournament.check_in_begins.blank? %>
+                <p><%= 'Unspecified'%></p>
+              <% else %>
+                <p><%= @tournament.check_in_begins.time.strftime("%I:%M %p") %></p>
+              <% end %>
+              <% if @tournament.first_round_begins.blank? %>
+                <p><%= 'Unspecified'%></p>
+              <% else %>
+                <p><%= @tournament.first_round_begins.time.strftime("%I:%M %p") %></p>
+              <% end %>
+              <p><%= @tournament.organizer.blank? ? 'Unspecified' : @tournament.organizer %></p>
+              <p><%= @tournament.contact.blank? ? 'Unspecified' : @tournament.contact %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell">
+          <div class="field">
+            <%= form_for @tournament_registration do |form| %>
+
+              <%= form.hidden_field :tournament_id, value: @tournament.id %>
+    
+              <% if current_user %>
+                <%= form.hidden_field :user_id, value: current_user.id %>
+                <% if @tournament_registrations.exists?(user_id: current_user.id, tournament_id: @tournament.id) %>
+                  <%= form.submit "Registered", { class: "button medium", disabled: true }%>
+                <% elsif !current_user.aga_number and @tournament.is_rated %>
+                  <%= form.submit "AGA number is required to register", { class: "button medium", disabled: true }%>
+                <% else %>
+                  <%= form.submit 'Register', { class: "button medium" } %>
+                <% end %>
+              <% else %>
+                <%= form.submit "Log in is required to register", { class: "button medium", disabled: true }%>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+    </div>
   </div>
 </div>

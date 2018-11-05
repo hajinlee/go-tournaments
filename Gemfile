@@ -31,6 +31,7 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 
 gem "foundation-rails", "~> 6.4.3"
+gem "font_awesome5_rails"
 gem "autoprefixer-rails"
 gem "jquery-rails", "~> 4.3"
 # Use Redis adapter to run Action Cable in production

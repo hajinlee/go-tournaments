@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :tournaments, :registrations
+  resources :tournaments, :tournament_registrations
 
   root "static_pages#index"
 

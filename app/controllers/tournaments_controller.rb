@@ -8,8 +8,8 @@ class TournamentsController < ApplicationController
 
   def show
     @tournament = Tournament.find(params[:id])
-    @registration = Registration.new
-    @registrations = Registration.all
+    @tournament_registration = TournamentRegistration.new
+    @tournament_registrations = TournamentRegistration.all
   end
 
   def new

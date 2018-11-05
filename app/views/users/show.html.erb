@@ -1,17 +1,13 @@
-<div class="container">
-  <div class="field">
-    <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-  </div>
+<div class="grid-x grid-padding-x">
+  <div class="cell">
+    <h3><%= @user.first_name %> <%= @user.last_name %></h3>
 
-  <div class="field">
     <%= link_to "Edit Profile", edit_user_registration_path %>&nbsp&nbsp/&nbsp&nbsp
-    <a href="http://agagd.usgo.org/player/<%= @user.aga_number %>/" target="blank">AGA Player Card</a>
+    <a href="http://agagd.usgo.org/player/<%= @user.aga_number %>/" target="blank">View AGA Player Card</a>
   </div>
 
-  <div class="field">
-    <h4>Registered Tournaments</h4>
-  </div>
-  <div class="field">
+  <div class="cell">
+    <h4 class="subtitle">Registered Tournaments</h4>
     <table id="my_registration_list">
       <tr>
         <th>Title</th>
@@ -21,49 +17,47 @@
         <th></th>
       </tr>
 
-      <% @registration.each do |r| %>
+      <% @tournament_registrations.each do |r| %>
         <tr>
           <td><%= r.tournament.title %></td>
           <td><%= r.tournament.start_date %></td>
           <td><%= r.tournament.city %></td>
           <td><%= link_to "Tournament Page", tournament_path(r.tournament.id) %></td>
-          <td><%= link_to "Unregister", registration_path(r.id),
+          <td><%= link_to "Unregister", tournament_registration_path(r.id),
                   method: :delete, data: {confirm: "Are you sure?"}%></td>
         </tr>
       <% end %>
 
     </table>
-    </div>
+  </div>
 
-    <div class="field">
-      <h4>My Tournaments</h4>
-    </div>
-    <div class="field">
-      <table id="my_tournament_list">
+  <div class="cell">
+    <h4 class="subtitle">My Tournaments</h4>
+    <table id="my_tournament_list">
+      <tr>
+        <th>Title</th>
+        <th>Start Date</th>
+        <th>City</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @tournaments.each do |t| %>
+        <% if t.start_date > Date.today %>
         <tr>
-          <th>Title</th>
-          <th>Start Date</th>
-          <th>City</th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <td><%= t.title %></td>
+          <td><%= t.start_date %></td>
+          <td><%= t.city %></td>
+          <td><%= link_to "Registrations", tournament_registration_path(t.id) %></td>
+          <td><%= link_to "Tournament Page", tournament_path(t.id) %></td>
+          <td><%= link_to "Edit", edit_tournament_path(t.id) %></td>
+          <td><%= link_to "Delete", tournament_path(t.id),
+                  method: :delete, data: {confirm: "Are you sure?"} %></td>
         </tr>
-
-        <% @tournament.each do |t| %>
-          <% if t.start_date > Date.today %>
-          <tr>
-            <td><%= t.title %></td>
-            <td><%= t.start_date %></td>
-            <td><%= t.city %></td>
-            <td><%= link_to "Registrations", registration_path(t.id) %></td>
-            <td><%= link_to "Tournament Page", tournament_path(t.id) %></td>
-            <td><%= link_to "Edit", edit_tournament_path(t.id) %></td>
-            <td><%= link_to "Delete", tournament_path(t.id),
-                    method: :delete, data: {confirm: "Are you sure?"} %></td>
-          </tr>
-          <% end %>
         <% end %>
-      </table>
-      </div>
+      <% end %>
+    </table>
+  </div>
 </div>

@@ -10,34 +10,20 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
   </head>
 
-  <body>    
+  <body>
     <header id="header" class="topbar-header">
     </header>
-
-    <div class="top-bar">     
-      <h3><a href="/" class="top-bar title">Go Tournaments</a></h3>
-      
-      <ul class="menu">
-        <% if user_signed_in? %>
-
-          <li><%= link_to "Create Tournament", new_tournament_path, {class: "top-bar right"} %></li>
-          <li><%= link_to "My Page", current_user, {class: "top-bar right"} %></li>
-          <li><%= link_to "Log out", destroy_user_session_path, {:method => :delete, class: "top-bar right"} %></li>
-        <% else %>
-
-          <li><%= link_to "Sign up", new_user_registration_path, {class: "top-bar right"} %></li>
-          <li><%= link_to "Log in", new_user_session_path, {class: "top-bar right"} %></li>
-        <% end %>
-      </ul>      
-    </div>
-    
+    <%= render '/layouts/topnav' %>
     <%= render '/layouts/display_notice' if notice.present? %>
     <%= render '/layouts/display_alert' if alert.present? %>
 
     <div class="main-content">
-      <%= yield %>
+      <div class="grid-container-fluid">
+        <%= yield %>
+      </div>
     </div>
     
     <div class="modal-footer">

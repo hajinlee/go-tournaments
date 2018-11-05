@@ -6,7 +6,18 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :email, presence: true
   
-  has_many :registrations, dependent: :destroy
+  has_many :tournament_registrations, dependent: :destroy
   has_many :tournaments, through: :registrations
-    
+  has_many :tournament_admins, dependent: :destroy
+
+  NOT_ADMIN = 0
+  SUPER_ADMIN = 1
+
+  def any_admin?
+    is_admin == SUPER_ADMIN
+  end
+
+  def tournament_admin?(tournament)
+    TournamentAdmin.where(user_id: id, tournament_id: tournament.id).any?
+  end
 end

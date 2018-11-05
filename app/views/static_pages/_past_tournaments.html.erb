@@ -1,0 +1,48 @@
+<% tournaments = Tournament.where('start_date < ?', Date.today) %>
+
+<div class="grid-x grid-padding-x">
+  <div class="cell center">
+    <div class="hollow button">
+      <%= link_to 'View Past Tournaments', '#', id: 'tournament-button' %>
+    </div>
+  </div>
+</div>
+
+<div id="past-tournaments">
+  <div class="grid-x grid-padding-x">
+    <div class="cell">
+      <% if tournaments.any? %>
+        <table id="tournament_list" class="unstriped">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Date</th>
+              <th>City</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% tournaments.order(start_date: :desc).each do |tournament| %>
+              <tr>
+                <td><%= link_to(tournament.title, tournament_path(tournament)) %></td>
+                <td><%= tournament.start_date %></td>
+                <td><%= tournament.city %></td>
+              </tr>
+            <% end %>
+          <tbody>
+        </table>
+      <% else %>
+        <%= @view.content_tag(:p, 'There are no past tournaments.')%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $('#tournament-button').click(function(e) {
+      $('#past-tournaments').toggle();
+      e.preventDefault();
+    });
+  });
+</script>

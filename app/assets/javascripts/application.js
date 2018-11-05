@@ -14,6 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require font_awesome5
 //= require activestorage
 //= require turbolinks
 //= require_tree .

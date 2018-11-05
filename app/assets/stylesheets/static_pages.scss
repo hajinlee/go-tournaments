@@ -2,5 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .main-content {
-  margin: 3em;
+  margin-left: 3em;
+  margin-right: 3em;
+  margin-top: 2em;
+  margin-bottom: 5em;
+}
+
+.topbar-header {
+  padding: 3rem 0;
+  background: url("header.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+.top-bar {
+  background: #564330;
+  padding-left: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  h3 {
+    margin-bottom: 0;
+  }
+  .title, a {
+    color: #fff;
+  }
+  ul {
+    background: #564330;
+  }
+}
+
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
 }

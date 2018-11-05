@@ -1,34 +1,9 @@
-<div class="container-fluid">
+<div class="grid-x grid-padding-x medium-up-2 large-up-3"> 
   <% @tournaments.each do |tournament| %>
-    <div class="col-sm-4">
-      <div class="card card-product-hover">
-
-        <% if tournament.image.exists? %>
-          <%= image_tag tournament.image.url(:medium), :class => "img-responsive"  %>
-        <% else %>
-          <%= image_tag("alt.jpg", :class => "img-responsive") %>
-        <% end %>
-
-        <div class="field-sm">
-         <h3><%= link_to(tournament.title, tournament_path(tournament), {class: "card-product-hover-title"}) %></h3>
-        </div>
-
-        <div class="field-sm">
-          <% if tournament.start_date == tournament.end_date %>
-            <p><%= tournament.start_date %></p>
-          <% else %>
-            <p><%= tournament.start_date %> ~ <%= tournament.end_date %></p>
-          <% end %>
-        </div>
-
-        <div class="field-sm">
-          <p><%= tournament.city %>, <%= tournament.state %></p>
-        </div>
-
-      </div>
+    <div class="cell">
+      <%= TournamentCardPresenter.new(self, tournament).display %>
     </div>
   <% end %>
-
-  <div class="center-link"><%= link_to 'All Tournaments List', tournaments_path %></div>
-
 </div>
+
+<%= render 'past_tournaments' %>
