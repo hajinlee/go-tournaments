@@ -1,6 +1,6 @@
 <div class="container">
   <h3>Registrations for: <%= @tournament.title %></h3>
-  <p>Total registrations: <%= @registration.count %> players</p>
+  <p>Total registrations: <%= @tournament_registrations.count %> players</p>
 
 <table id="tournament_list">
   <tr>
@@ -10,7 +10,7 @@
     <th>AGA Rating</th>
   </tr>
 
-  <% @registration.each do |r| %>
+  <% @tournament_registrations.each do |r| %>
     <tr>
       <td><%= r.user.first_name %></td>
       <td><%= r.user.last_name %></td>

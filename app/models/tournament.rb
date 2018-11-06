@@ -9,4 +9,22 @@ class Tournament < ApplicationRecord
 
   has_many :tournament_registrations, dependent: :destroy
   has_many :users, through: :tournament_registrations
+  has_many :tournament_admins, dependent: :destroy
+
+  def check_in_at
+    check_in_begins.blank? ? 'Unspecified' : check_in_begins.time.strftime("%I:%M %p")
+  end
+
+  def first_round_at
+    first_round_begins.blank? ? 'Unspecified' : first_round_begins.time.strftime("%I:%M %p")
+  end
+
+  def organizers
+    # TODO add tournament admins later
+    admins = organizer
+  end
+
+  def is_admin?(user)
+    user.id == author_user_id
+  end
 end

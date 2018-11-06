@@ -13,7 +13,7 @@ class TournamentRegistrationsController < ApplicationController
 
   def show
     @tournament = Tournament.find(params[:id])
-    @tournament_registration = TournamentRegistration.where("tournament_id = ?", @tournament.id)
+    @tournament_registrations = TournamentRegistration.where("tournament_id = ?", @tournament.id)
   end
 
   def destroy

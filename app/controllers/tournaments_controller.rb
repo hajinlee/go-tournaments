@@ -10,6 +10,7 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.find(params[:id])
     @tournament_registration = TournamentRegistration.new
     @tournament_registrations = TournamentRegistration.all
+    @registration = TournamentRegistration.where(user_id: current_user.id, tournament_id: @tournament.id).first
   end
 
   def new

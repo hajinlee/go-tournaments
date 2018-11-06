@@ -1,7 +1,9 @@
 class TournamentPresenter
-  def initialize(view, tournament, options = {})
+  def initialize(view, tournament, user, options = {})
     @view = view
     @tournament = tournament
+    @user = user
+    @tournament_registration = TournamentRegistration.new
   end
 
   def display
@@ -58,14 +60,4 @@ class TournamentPresenter
   def make_header_item(item)
     @view.content_tag(:div, item, class: 'header-item')
   end
-
-
-#  <table id="tournament_details">
-#    <tr>
-#      <th><%= image_tag("go.png", :size => "25x25") %></th>
-#      <th><%= image_tag("hourglass.svg", :size => "25x25") %></th>
-#      <th><%= image_tag("graph.svg", :size => "25x25") %></th>
-#      <th><%= image_tag("usd.svg", :size => "25x25") %></th>
-#    </tr>
-
 end
