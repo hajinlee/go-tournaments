@@ -20,7 +20,7 @@
 
         <div class="cell tournament-detail medium-6">
           <%= make_tournament_detail_item(icon('clock', 'regular', 'fa-lg'), "Check-in begins at:", @tournament.check_in_at) %>
-          <%= make_tournament_detail_item(icon('clock', 'regular', 'fa-lg'), "First round begins at:", @tournament.first_round_at)%>
+          <%= make_tournament_detail_item(icon('clock', 'regular', 'fa-lg'), "Round 1 begins at:", @tournament.first_round_at)%>
           <%= make_tournament_detail_item(icon('people-carry', nil, 'fa-lg'), "Organizers:", @tournament.organizers)%>
           <%= make_tournament_detail_item(icon('comment-dots', 'regular', 'fa-lg'), "Contact info:", contact)%>
         </div>
@@ -32,29 +32,27 @@
               <%= f.hidden_field :user_id, value: current_user.id %>
               <% if @registration.present? %>
                 <%= link_to "Unregister", tournament_registration_path(@registration.id),
-                            { class: 'button medium warning', method: :delete, data: {confirm: "Are you sure?"} } %>
+                            { class: 'button warning', method: :delete, data: {confirm: "Are you sure?"} } %>
               <% elsif current_user.aga_number.blank? && @tournament.is_rated %>
                 <%= link_to "AGA number is required to register", nil,
-                            { class: 'button medium', disabled: true } %>
+                            { class: 'button', disabled: true } %>
               <% else %>
-                <%= f.submit "Register", { class: 'button medium' } %>
+                <%= f.submit "Register", { class: 'button' } %>
               <% end %>
             <% end %>
           <% else %>
             <%= link_to "Log-in is required to register", nil,
-                        { class: "button medium", disabled: true } %>
+                        { class: "button", disabled: true } %>
           <% end %>
         </div>
 
         <% if current_user.is_admin? %>
           <div class="cell tournament-actions">
             <h4 class="subtitle">Manage Tournament</h4>
-            <%= link_to "Registrations", tournament_registration_path(@tournament.id),
+            <%= link_to "View registrations", tournament_registration_path(@tournament.id),
                         { class: "button hollow small" } %>
             <%= link_to "Edit tournament info", edit_tournament_path(@tournament.id),
                         { class: "button hollow small" } %>
-            <%= link_to "Delete this tournament", tournament_path(@tournament.id),
-                        { class: "button hollow small", method: :delete, data: {confirm: "Are you sure?"} } %>
           </div>
         <% end %>
       </div>

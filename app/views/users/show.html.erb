@@ -3,7 +3,7 @@
     <h3><%= @user.first_name %> <%= @user.last_name %></h3>
     <hr>
   </div>
-  <div class="cell large-3 medium-4">
+  <div class="cell medium-3">
     <div class="user-menu">
       <p><%= link_to "Edit Profile", edit_user_registration_path %></p>
       <p><a href="http://agagd.usgo.org/player/<%= @user.aga_number %>/" target="blank">View AGA Player Card</a></p>
@@ -11,15 +11,17 @@
     </div>
   </div>
 
-  <div class="cell my-tournaments large-9 medium-8">
+  <div class="cell my-tournaments medium-9">
     <h4 class="subtitle">Registered Upcoming Tournaments</h4>
     <% if @tournament_registrations.present? %>
-      <table id="my_registration_list">
-        <tr>
-          <th>Title</th>
-          <th>Date</th>
-          <th>City</th>
-        </tr>
+      <table id="my_registration_list" class="unstriped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>City</th>
+          </tr>
+        </thead>
 
         <% @tournament_registrations.each do |r| %>
           <tr>
@@ -36,12 +38,14 @@
 
     <h4 class="subtitle">My Tournaments</h4>
       <% if @tournaments.present? %>
-        <table id="my_tournament_list">
-          <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>City</th>
-          </tr>
+        <table id="my_tournament_list" class="unstriped">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Date</th>
+              <th>City</th>
+            </tr>
+          </thead>
 
           <% @tournaments.each do |t| %>
             <% if t.start_date > Date.today %>
