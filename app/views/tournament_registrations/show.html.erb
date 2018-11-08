@@ -2,25 +2,31 @@
   <h3>Registrations for: <%= @tournament.title %></h3>
   <p>Total registrations: <%= @tournament_registrations.count %> players</p>
 
-<table id="tournament_list">
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>AGA Number</th>
-    <th>AGA Rating</th>
-  </tr>
+  <% if @tournament_registrations.present? %>
+    <table id="tournament_list" class="unstriped">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>AGA Number</th>
+          <th>AGA Rating</th>
+        </tr>
+      </thead>
 
-  <% @tournament_registrations.each do |r| %>
-    <tr>
-      <td><%= r.user.first_name %></td>
-      <td><%= r.user.last_name %></td>
-      <td><%= r.user.aga_number %></td>
-      <% if r.user.aga_number? %>
-        <td><a href="http://agagd.usgo.org/player/<%= r.user.aga_number %>/" target="blank">AGA Rating</a></td>
-      <% else %>
-        <td></td>
+      <% @tournament_registrations.each do |r| %>
+        <tr>
+          <td><%= r.user.first_name %></td>
+          <td><%= r.user.last_name %></td>
+          <td><%= r.user.aga_number %></td>
+          <% if r.user.aga_number? %>
+            <td><a href="http://agagd.usgo.org/player/<%= r.user.aga_number %>/" target="blank">AGA Rating</a></td>
+          <% else %>
+            <td></td>
+          <% end %>
+        </tr>
       <% end %>
-    </tr>
+    </table>
+  <% else %>
+    <%= "There are no registered players." %>
   <% end %>
-</table>
 </div>

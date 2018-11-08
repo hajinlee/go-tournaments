@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :first_name, :last_name, :email, presence: true
+  validates_uniqueness_of :aga_number, :allow_nil => true, :allow_blank => true
+  validates_uniqueness_of :email
+  validates :password, length: { minimum: 8 }
   
   has_many :tournament_registrations, dependent: :destroy
   has_many :tournaments, through: :registrations

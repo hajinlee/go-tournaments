@@ -3,4 +3,8 @@ class TournamentRegistration < ApplicationRecord
 
   belongs_to :tournament
   belongs_to :user
+
+  def user
+    User.where(id: user_id).first
+  end
 end

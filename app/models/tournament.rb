@@ -27,4 +27,8 @@ class Tournament < ApplicationRecord
   def is_admin?(user)
     user.id == author_user_id
   end
+
+  def reg_open?
+    start_date > Date.today
+  end
 end

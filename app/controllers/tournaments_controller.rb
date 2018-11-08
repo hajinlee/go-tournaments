@@ -10,12 +10,11 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.find(params[:id])
     @tournament_registration = TournamentRegistration.new
     @tournament_registrations = TournamentRegistration.all
-    @registration = TournamentRegistration.where(user_id: current_user.id, tournament_id: @tournament.id).first
+    @registration = TournamentRegistration.where(user_id: current_user.id, tournament_id: @tournament.id).first if current_user
   end
 
   def new
     @tournament = Tournament.new
-
   end
 
   def edit
@@ -48,8 +47,6 @@ class TournamentsController < ApplicationController
 
     redirect_to root_path
   end
-
-
 
   private
     def tournament_params

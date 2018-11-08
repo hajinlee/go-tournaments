@@ -26,7 +26,7 @@
         </div>
 
         <div class="cell registration-button">
-          <% if current_user.present? %>
+          <% if current_user.present? && @tournament.reg_open? %>
             <%= form_for @tournament_registration do |f| %>
               <%= f.hidden_field :tournament_id, value: @tournament.id %>
               <%= f.hidden_field :user_id, value: current_user.id %>
@@ -40,13 +40,13 @@
                 <%= f.submit "Register", { class: 'button' } %>
               <% end %>
             <% end %>
-          <% else %>
+          <% elsif !current_user && @tournament.reg_open? %>
             <%= link_to "Log-in is required to register", nil,
                         { class: "button", disabled: true } %>
           <% end %>
         </div>
 
-        <% if current_user.is_admin? %>
+        <% if current_user && current_user.is_admin? %>
           <div class="cell tournament-actions">
             <h4 class="subtitle">Manage Tournament</h4>
             <%= link_to "View registrations", tournament_registration_path(@tournament.id),
