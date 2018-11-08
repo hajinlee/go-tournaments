@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "registration path", type: :feature do
-  let(:password) { "abcdef" }
+  let(:password) { "abcdefgh" }
   let(:user) { create :user, password: password }
 
   before do
@@ -14,10 +14,11 @@ describe "registration path", type: :feature do
 
   context "successful registration" do
     it "shows up on my page" do
-      click_link "Create Tournament"
-      fill_in "Tournament Title:", with: "Bot Tournament II"
-      fill_in "Start Date:", with: "11/11/2022"
-      fill_in "End Date:", with: "11/12/2022"
+      click_link "My Page"
+      click_link "Create a tournament"
+      fill_in "Tournament title:", with: "Bot Tournament II"
+      fill_in "Start date:", with: "11/11/2022"
+      fill_in "End date:", with: "11/12/2022"
       fill_in "Venue:", with: "go center"
       fill_in "City:", with: "DC"
       fill_in "State:", with: "DC"
@@ -28,23 +29,9 @@ describe "registration path", type: :feature do
       click_link "Go Tournaments"
       click_link "Bot Tournament II"
       click_button "Register"
-      click_link "My Page"
       expect(page).to have_content "Unregister"
-      click_link "Registrations"
+      click_link "My Page"
       expect(page).to have_content "Bot Tournament II"
-      expect(page).to have_content "1 players"
-    end
-  end
-
-  context "unregister link" do
-    it "deletes the registration" do
-      visit "/"
-      click_link "Bot Tournament II"
-      click_button "Register"
-      click_link "My Page"
-      expect(page).to have_content "Unregister"
-      click_link "Unregister"
-      expect(page).to have_no_content "Bot Tournament II"
     end
   end
 end

@@ -10,8 +10,8 @@ describe "user sign up path", type: :feature do
       fill_in "First Name:", with: "Iron"
       fill_in "Last Name:", with: "Man"
       fill_in "Email:", with: "iron@man.com"
-      fill_in "Password:", with: "123456"
-      fill_in "Password Confirmation:", with: "123456"
+      fill_in "Password:", with: "12345678"
+      fill_in "Password Confirmation:", with: "12345678"
       click_button "Sign up"
       expect(page).to have_content "Welcome! You have signed up successfully."
     end
@@ -22,8 +22,8 @@ describe "user sign up path", type: :feature do
       fill_in "First Name:", with: "Iron"
       fill_in "Last Name:", with: "Man"
       fill_in "Email:", with: "ironman"
-      fill_in "Password:", with: "123456"
-      fill_in "Password Confirmation:", with: "123456"
+      fill_in "Password:", with: "12345678"
+      fill_in "Password Confirmation:", with: "12345678"
       click_button "Sign up"
       expect(page).to have_content "invalid"
     end
@@ -34,8 +34,8 @@ describe "user sign up path", type: :feature do
       fill_in "First Name:", with: "Iron"
       fill_in "Last Name:", with: "Man"
       fill_in "Email:", with: "iron@man.com"
-      fill_in "Password:", with: "123456"
-      fill_in "Password Confirmation:", with: "123456"
+      fill_in "Password:", with: "12345678"
+      fill_in "Password Confirmation:", with: "12345678"
       click_button "Sign up"
       expect(page).to have_content "Email has already been taken"
     end
