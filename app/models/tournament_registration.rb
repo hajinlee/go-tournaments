@@ -7,4 +7,8 @@ class TournamentRegistration < ApplicationRecord
   def user
     User.where(id: user_id).first
   end
+
+  def registered_date
+    Time.at(created_at).strftime("%B %e, %Y")
+  end
 end

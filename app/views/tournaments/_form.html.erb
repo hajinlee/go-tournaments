@@ -68,12 +68,12 @@
       <div class="grid-x grid-padding-x">
         <div class="cell medium-6">
           <%= f.label :is_rate, "Is the tournament rated?" %>
-          <%= f.text_field :is_rated %>
+          <%= f.select :is_rated, options_for_select(rated_options, @tournament.is_rated) %>
         </div>
 
         <div class="cell medium-6">
           <%= f.label :game_rules, "Game rules:" %>
-          <%= f.text_field :game_rules, placeholder: "AGA Rules? Japanese Rules? Ing Rules?" %>
+          <%= f.select :game_rules, options_for_select(game_rules_options, @tournament.game_rules) %>
         </div>
 
         <div class="cell medium-6">

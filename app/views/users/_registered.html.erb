@@ -1,0 +1,18 @@
+<div class="tabs-panel is-active" id="panel-registered">
+  <h4 class="subtitle">Registered Upcoming Tournaments</h4>
+  <% if @tournament_registrations.present? %>
+    <table id="my_registration_list" class="unstriped">
+
+      <% @tournament_registrations.each do |r| %>
+        <tr>
+          <td><%= link_to r.tournament.title, tournament_path(r.tournament.id) %></td>
+          <td><%= r.tournament.start_date %></td>
+          <td><%= r.tournament.city %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <%= "There is no tournament to display." %>
+    <br/>
+  <% end %>
+</div>

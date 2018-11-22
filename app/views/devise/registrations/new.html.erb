@@ -1,7 +1,7 @@
 <div class="grid-x grid-margin-x">
   <div class="cell medium-2"></div>
   <div class="cell medium-8">
-    <h2>Sign up</h2>
+    <h3>Sign up</h3>
 
     <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
       <%= devise_error_messages! %>
@@ -22,10 +22,7 @@
         <%= f.email_field :email, autocomplete: "email" %>
       </div>
 
-      <div class="cell">
-        <%= f.label :aga_number, "AGA Number: (optional)" %>
-        <%= f.text_field :aga_number %>
-      </div>
+      <div class="cell"></div>
 
       <div class="cell">
         <%= f.label :password, "Password:" %>

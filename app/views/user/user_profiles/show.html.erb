@@ -1,0 +1,13 @@
+<div class="grid-x grid-padding-x">
+  <div class="cell medium-3">
+    <%= image_tag @user_profile.image %>
+  </div>
+
+  <div class="cell medium-9">
+    <%= make_modal_close_button %>
+    <h5><%= @user_profile.name %><h5>
+    <p><%= @user_profile.organization %></p>
+    <p><%= 'Rating: ' + @user_profile.rating.to_s %></p>
+    <p><%= @user_profile.clubs %></p>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<%= form_for @user_profile, url: {controller: "user/user_profiles", action: "update", local: true} do |f| %>
+  <div class="grid-x grid-padding-x">
+    <div class="cell medium-3">
+      <%= image_tag @user_profile.image %>
+      <%= f.label :avatar, "Profile picture" %>
+      <%= f.file_field :avatar %>
+    </div>
+
+    <div class="cell medium-9">
+      <%= make_modal_close_button %>
+      <h5><%= @user_profile.name %></h5>
+      <p><%= f.label :rating_organization, "Association:" %>
+         <%= f.select :rating_organization, options_for_select(organization_options, @user_profile.rating_organization) %></p>
+      <p><%= f.label :membership_number, "Membership number:" %>
+         <%= f.text_field :membership_number %></p>
+      <p><%= f.label :rating, "Rating:" %>
+         <%= f.select :rating, options_for_select(rating_options, @user_profile.rating) %></p>
+      <p><%= f.label :clubs, "Affiliated club:" %>
+         <%= f.text_field :clubs %></p>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="cell">
+      <%= f.submit 'Submit', { class: "button right" } %>
+    </div>
+  </div>
+<% end %>

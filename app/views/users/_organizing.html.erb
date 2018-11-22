@@ -1,0 +1,19 @@
+<div class="tabs-panel" id="panel-organizing">
+  <h4 class="subtitle">My Tournaments</h4>
+    <% if @tournaments.present? %>
+      <table id="my_tournament_list" class="unstriped">
+
+        <% @tournaments.each do |t| %>
+          <% if t.start_date > Date.today %>
+          <tr>
+            <td><%= link_to t.title, tournament_path(t.id) %></td>
+            <td><%= t.start_date %></td>
+            <td><%= t.city %></td>
+          </tr>
+          <% end %>
+        <% end %>
+      </table>
+    <% else %>
+      <%= "There is no tournament to display." %>
+    <% end %>
+</div>

@@ -1,0 +1,22 @@
+<script>
+  $(function() {
+    $('body').on('click', '[data-reveal-ajax="true"]', function(e) {
+      e.preventDefault();
+
+      var modal_id = $(this).data('open-in');
+      var modal = new Foundation.Reveal($('#' + modal_id));
+//      modal.open();
+
+      var url = $(this).attr('href');
+
+      $.ajax(url)
+        .done(function(resp) {
+          $('#' + modal_id).html(resp).foundation('open');
+          $('.close-button').on('click', function(e) {
+            location.reload();
+          });
+        });
+    });
+
+  });
+</script>

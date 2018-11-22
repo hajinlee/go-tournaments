@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters_sign_up,
                 :configure_permitted_parameters_update, if: :devise_controller?
 
+  layout :choose_layout
+
   protected
 
   def configure_permitted_parameters_sign_up
@@ -12,4 +14,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :aga_number])
   end
 
+  def choose_layout
+    request.xhr? ? 'modal_layout' : 'application'
+  end
 end

@@ -1,6 +1,6 @@
 <% presenter = TournamentPresenter.new(self, @tournament, current_user) %>
-<% rules = @tournament.game_rules %>
-<% rating = @tournament.is_rated? ? 'AGA rated' : 'Not rated' %>
+<% rules = @tournament.display_game_rules %>
+<% rating = @tournament.display_rated %>
 <% time_limit = @tournament.time_setting.blank? ? 'Unspecified' : @tournament.time_setting %>
 <% fee = @tournament.registration_fee.blank? ? 'Unspecified' : @tournament.registration_fee %>
 <% contact = @tournament.contact.blank? ? 'Unspecified' : @tournament.contact %>
@@ -33,7 +33,7 @@
               <% if @registration.present? %>
                 <%= link_to "Unregister", tournament_registration_path(@registration.id),
                             { class: 'button warning', method: :delete, data: {confirm: "Are you sure?"} } %>
-              <% elsif current_user.aga_number.blank? && @tournament.is_rated %>
+              <% elsif current_user.needs_aga?(@tournament) %>
                 <%= link_to "AGA number is required to register", nil,
                             { class: 'button', disabled: true } %>
               <% else %>

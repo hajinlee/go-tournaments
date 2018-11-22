@@ -7,4 +7,20 @@
   .subtitle {
     margin-top: 0;
   }
+  tbody {
+    border: none;
+  }
+  .tabs-content > .tabs-panel > table.unstriped > tbody > tr {
+    border-bottom: none;
+  }
+}
+
+.profile-image {
+  margin-bottom: 1em;
+}
+
+.profile-section {
+  h5, p {
+    margin-left: 16px;
+  }
 }

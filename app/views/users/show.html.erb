@@ -1,64 +1,25 @@
 <div class="grid-x grid-padding-x">
-  <div class="cell large-12 medium-12">
-    <h3><%= @user.first_name %> <%= @user.last_name %></h3>
-    <hr>
-  </div>
-  <div class="cell medium-3">
+  <div class="cell medium-3 profile-section">
+    <div class="profile-image">
+      <%= image_tag @user.get_image %>
+    </div>
+    <h5><%= link_to @user.name, user_user_profile_path(@user_profile), {"data-reveal-ajax" => true, "data-open-in" => "modal-box1" } %></h5>
     <div class="user-menu">
-      <p><%= link_to "Edit Profile", edit_user_registration_path %></p>
-      <p><a href="http://agagd.usgo.org/player/<%= @user.aga_number %>/" target="blank">View AGA Player Card</a></p>
+      <p><%= link_to "Edit profile", edit_user_user_profile_path(@user_profile), {"data-reveal-ajax" => true, "data-open-in" => "modal-box2" } %></p>
+      <p><%= link_to "Account settings", edit_user_registration_path %></p>
       <p><%= link_to "Create a tournament", new_tournament_path %></p>
     </div>
   </div>
 
   <div class="cell my-tournaments medium-9">
-    <h4 class="subtitle">Registered Upcoming Tournaments</h4>
-    <% if @tournament_registrations.present? %>
-      <table id="my_registration_list" class="unstriped">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>City</th>
-          </tr>
-        </thead>
-
-        <% @tournament_registrations.each do |r| %>
-          <tr>
-            <td><%= link_to r.tournament.title, tournament_path(r.tournament.id) %></td>
-            <td><%= r.tournament.start_date %></td>
-            <td><%= r.tournament.city %></td>
-          </tr>
-        <% end %>
-      </table>
-    <% else %>
-      <%= "There is no tournament to display." %>
-      <br/>
-    <% end %>
-
-    <h4 class="subtitle">My Tournaments</h4>
-      <% if @tournaments.present? %>
-        <table id="my_tournament_list" class="unstriped">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Date</th>
-              <th>City</th>
-            </tr>
-          </thead>
-
-          <% @tournaments.each do |t| %>
-            <% if t.start_date > Date.today %>
-            <tr>
-              <td><%= link_to t.title, tournament_path(t.id) %></td>
-              <td><%= t.start_date %></td>
-              <td><%= t.city %></td>
-            </tr>
-            <% end %>
-          <% end %>
-        </table>
-      <% else %>
-        <%= "There is no tournament to display." %>
-      <% end %>
+    <ul class="tabs" data-tabs id="user-tabs">
+      <li class="tabs-title is-active"><a href="#panel-registered" aria-selected="true">Registered</a></li>
+      <li class="tabs-title"><a data-tabs-target="panel-organizing" href="#panel2">Organizing</a></li>
+    </ul>
+    <div class="tabs-content" data-tabs-content="user-tabs">
+      <%= render 'registered' %>
+      <%= render 'organizing' %>
+    </div>
   </div>
 </div>
+<%= render '/scripts/modal' %>

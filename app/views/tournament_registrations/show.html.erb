@@ -6,23 +6,20 @@
     <table id="tournament_list" class="unstriped">
       <thead>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>AGA Number</th>
-          <th>AGA Rating</th>
+          <th>Name</th>
+          <th>Registered Date</th>
+          <th>Rating</th>
+          <th>Club</th>
         </tr>
       </thead>
 
       <% @tournament_registrations.each do |r| %>
+        <% @user_profile = r.user.user_profile %>
         <tr>
-          <td><%= r.user.first_name %></td>
-          <td><%= r.user.last_name %></td>
-          <td><%= r.user.aga_number %></td>
-          <% if r.user.aga_number? %>
-            <td><a href="http://agagd.usgo.org/player/<%= r.user.aga_number %>/" target="blank">AGA Rating</a></td>
-          <% else %>
-            <td></td>
-          <% end %>
+          <td><%= make_modal_link(r.user.name, user_user_profile_path(@user_profile)) %></td>
+          <td><%= r.registered_date %></td>
+          <td><%= r.user.rating %></td>
+          <td><%= r.user.club %></td>
         </tr>
       <% end %>
     </table>
@@ -30,3 +27,4 @@
     <%= "There are no registered players." %>
   <% end %>
 </div>
+<%= render '/scripts/modal' %>

@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :users, only: [:show]
   end
+
+  namespace :user, path: "player" do
+    resources :user_profiles, path: "profile"
+
+  end
 end
