@@ -1,0 +1,43 @@
+<div class="container">
+  <h3>Registrations for: <%= @tournament.title %></h3>
+  <p>Total registrations: <%= @tournament_registrations.count %> players</p>
+
+  <% if @tournament_registrations.present? %>
+    <div class="grid-x grid-padding-x">
+      <div class="cell medium-2">
+        <p><%= make_modal_link("Register a user", new_tournament_tournament_registration_path(tournament_id: @tournament.id)) %>
+      </div>
+
+      <div class="cell medium-10">
+        <table id="tournament_list" class="unstriped">
+          <thead>
+            <tr>
+              <th>UID</th>
+              <th>Name</th>
+              <th>Registered Date</th>
+              <th>Rating</th>
+              <th>Club</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <% @tournament_registrations.each do |r| %>
+            <% @user_profile = r.user.user_profile %>
+            <tr>
+              <td><%= r.user.id %></td>
+              <td><%= make_modal_link(r.user.name, user_user_profile_path(@user_profile)) %></td>
+              <td><%= r.registered_date %></td>
+              <td><%= r.user.rating %></td>
+              <td><%= r.user.club %></td>
+              <td><%= link_to(fa_icon('trash-alt'), url: {controller: 'tournament_registrations',
+                              action: 'destory', data: {confirm: "Are you sure?"} } )%>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  <% else %>
+    <%= "There are no registered players." %>
+  <% end %>
+</div>
+<%= render '/scripts/modal' %>

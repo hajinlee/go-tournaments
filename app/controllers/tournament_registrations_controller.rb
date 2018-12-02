@@ -1,18 +1,19 @@
 class TournamentRegistrationsController < ApplicationController
   def new
     @tournament_registration = TournamentRegistration.new
+    @tournament = Tournament.where(id: params[:tournament_id].to_i).first
   end
 
   def create
     @tournament_registration = TournamentRegistration.new(tournament_registration_params)
 
     if @tournament_registration.save
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: root_path, notice: 'Registered successfully.')
     end
   end
 
-  def show
-    @tournament = Tournament.find(params[:id])
+  def index
+    @tournament = Tournament.where(id: params[:tournament_id].to_i).first
     @tournament_registrations = TournamentRegistration.where("tournament_id = ?", @tournament.id)
   end
 
@@ -24,7 +25,8 @@ class TournamentRegistrationsController < ApplicationController
   end
 
   private
-    def tournament_registration_params
+
+  def tournament_registration_params
       params[:tournament_registration].permit(:tournament_id, :user_id)
-    end
+  end
 end

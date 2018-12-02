@@ -6,10 +6,7 @@ class User::UserProfilesController < ApplicationController
   end
 
   def edit
-    @organizations = [
-      { id: 0, name: 'American Go Association'},
-      { id: 999, name: 'Other' }
-    ]
+    @user_profile = UserProfile.find(params[:id])
   end
 
   def update
@@ -24,7 +21,7 @@ class User::UserProfilesController < ApplicationController
   private
 
   def set_user_profile
-    @user_profile = current_user.user_profile
+    @user_profile = UserProfile.find(params[:id])
   end
 
   def user_profile_params

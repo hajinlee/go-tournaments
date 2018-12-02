@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>All Accounts</h2>
+
+<table id="users_list" class="unstriped">
+  <thead>
+    <tr>
+      <th>UID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+
+  <% @users.order(:id).each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= link_to user.name, edit_user_user_profile_path(user.user_profile), {"data-reveal-ajax" => true, "data-open-in" => "modal-box2" } %></td>
+      <td><%= user.email %></td>
+      <td><%= user.user_profile.rating %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+<%= render '/scripts/modal' %>

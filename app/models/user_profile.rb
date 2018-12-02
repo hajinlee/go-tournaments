@@ -5,7 +5,7 @@ class UserProfile < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 3.megabytes
 
-  validates_uniqueness_of :membership_number, scope: :rating_organization
+  validates_uniqueness_of :membership_number, scope: :rating_organization, allow_nil: true
 
   # rating_organization:
   AGA = 0
