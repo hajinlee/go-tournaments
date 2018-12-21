@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_033834) do
+ActiveRecord::Schema.define(version: 2018_12_07_063028) do
 
   create_table "tournament_admins", id: false, force: :cascade do |t|
     t.integer "tournament_id"
@@ -19,11 +19,33 @@ ActiveRecord::Schema.define(version: 2018_11_15_033834) do
     t.index ["user_id"], name: "index_tournament_admins_on_user_id"
   end
 
+  create_table "tournament_games", force: :cascade do |t|
+    t.integer "tournament_id"
+    t.integer "white_id"
+    t.integer "black_id"
+    t.integer "round_number"
+    t.integer "result"
+    t.index ["tournament_id"], name: "index_tournament_games_on_tournament_id"
+  end
+
+  create_table "tournament_player_scores", force: :cascade do |t|
+    t.integer "tournament_id"
+    t.integer "round_number"
+    t.integer "user_id"
+    t.integer "mms"
+    t.integer "wins"
+    t.integer "sos"
+    t.integer "sosos"
+    t.index ["tournament_id"], name: "index_tournament_player_scores_on_tournament_id"
+    t.index ["user_id"], name: "index_tournament_player_scores_on_user_id"
+  end
+
   create_table "tournament_registrations", force: :cascade do |t|
     t.integer "tournament_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "checked_in"
     t.index ["tournament_id"], name: "index_tournament_registrations_on_tournament_id"
     t.index ["user_id"], name: "index_tournament_registrations_on_user_id"
   end
