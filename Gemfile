@@ -49,7 +49,7 @@ gem "jquery-rails", "~> 4.3"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "rubocop", "~> 0.56.0", require: false
 gem "paperclip", "~> 6.0.0"
-gem "devise", "~> 4.2"
+gem "devise", "~> 4.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
