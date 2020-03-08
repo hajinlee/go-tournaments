@@ -57,7 +57,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Github flagged these for security
 gem "loofah", "~> 2.2.3"
 gem "ffi", "~> 1.9.24"
-gem "rubyzip", "~> 1.2.2"
+gem "rubyzip", "~> 1.3.0"
 gem "sprockets", "~> 3.7.2"
 
 group :development, :test do
