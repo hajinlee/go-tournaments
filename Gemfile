@@ -55,7 +55,7 @@ gem "devise", "~> 4.2"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Github flagged these for security
-gem "loofah", "~> 2.2.3"
+gem "loofah", "~> 2.19.1"
 gem "ffi", "~> 1.9.24"
 gem "rubyzip", "~> 1.2.2"
 gem "sprockets", "~> 3.7.2"
